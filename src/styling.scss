@@ -1,0 +1,388 @@
+// nv0skar.github.io
+// Copyright (C) 2022 Oscar
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+$electric-red: #ff0000;
+$soft-red: #ff4949;
+$neon-red: #ff4766;
+$electric-yellow: #ffff00;
+$electric-green: #50ff00;
+$off-green: #004032;
+$neon-pink: #ff48c4;
+$electric-blue: #00ffff;
+$pure-blue: #0055ff;
+$deep-blue: #000040;
+$dystopian-blue: #192747;
+$dark-blue: #0d1424;
+$off-blue: #003740;
+$bluish-purple: #7f00ff;
+$deep-purple: #420042;
+
+* {
+    color: white;
+    cursor: default;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+%section {
+    box-sizing: border-box;
+    border-top: 0.45rem dashed $neon-red;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    font-family: "Lato", sans-serif;
+}
+
+@mixin wholeViewport() {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    min-height: 100vh;
+    min-width: 100%;
+    margin: -0.5rem;
+    @media (max-width: 500px) {
+        min-height: calc(100vh - 6rem);
+    }
+}
+
+@mixin linkUnderline($color: $soft-red, $initialThickness: 0.25rem, $finalThickness: 0.5rem) {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: $color;
+    text-decoration-thickness: $initialThickness;
+    transition-property: text-decoration-thickness;
+    transition-duration: 0.2s;
+    &:hover {
+        text-decoration-thickness: $finalThickness;
+    }
+}
+
+@mixin glassEffect($blur: 1px, $saturate: 100%) {
+    backdrop-filter: blur($blur) saturate($saturate);
+    -webkit-backdrop-filter: blur($blur) saturate($saturate);
+}
+
+underline {
+    text-shadow: 0 0 1.5px wheat;
+    text-decoration: underline;
+    text-decoration-color: $soft-red;
+    text-decoration-thickness: 0.5rem;
+}
+
+loader {
+    @include glassEffect(82px, 125%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transform-origin: 100%;
+    z-index: 1;
+}
+
+body {
+    background-color: $dark-blue;
+    background: radial-gradient(circle, $deep-blue 0%, $dark-blue 50%);
+    overflow-x: hidden;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+h1 {
+    position: relative;
+    font-size: 4rem;
+    letter-spacing: -0.05rem;
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0rem;
+        width: var(--underlineWidth);
+        max-width: var(--underlineMaxWidth);
+        height: 1.5rem;
+        border-radius: 0.25rem;
+        z-index: -1;
+    }
+}
+
+h2 {
+    font-size: 2.75rem;
+}
+
+#head {
+    @include wholeViewport();
+    box-sizing: border-box;
+    @media (min-width: 500px) {
+        border-top: 1rem solid transparent;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../assets/images/portrait.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        filter: saturate(150%) contrast(110%);
+        @media (min-width: 500px) {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+    }
+    h1 {
+        @keyframes glow {
+            from {
+                text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat,
+                    0 0 5px rgba($color: white, $alpha: 0.1), 0 0 15px rgba($color: whitesmoke, $alpha: 0.2),
+                    0 0 25px rgba($color: wheat, $alpha: 0.3);
+            }
+            to {
+                text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat,
+                    0 0 8px rgba($color: white, $alpha: 0.1), 0 0 18px rgba($color: whitesmoke, $alpha: 0.2),
+                    0 0 28px rgba($color: wheat, $alpha: 0.3);
+            }
+        }
+        position: absolute;
+        top: 16rem;
+        left: 16rem;
+        transform: translate(-50%, -100%) skew(-20deg) scaleY(125%);
+        color: $neon-red;
+        //text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat; Is already defined at the glow animation!
+        animation: glow 1.5s ease-in-out infinite alternate;
+        font-size: 7.5rem;
+        font-family: "Norican", cursive;
+        letter-spacing: -0.25rem;
+        --underlineWidth: 100%;
+        mix-blend-mode: hard-light;
+        filter: contrast(180%) brightness(175%);
+        @media (max-width: 500px) {
+            top: 50%;
+            left: 50%;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0.25rem;
+            bottom: 0.75rem;
+            width: var(--underlineWidth);
+            height: 2.5rem;
+            transform: skew(50deg) rotate(-8deg);
+            transform-origin: 0 0;
+            background-color: $bluish-purple;
+            border-radius: 0.25rem;
+            z-index: -1;
+        }
+    }
+}
+
+#intro {
+    @extend %section;
+    @include glassEffect(52px, 125%);
+    border-top: none;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background-color: rgba($color: $deep-purple, $alpha: 0.1);
+    margin-top: -3.5rem;
+    padding-top: 1rem;
+    span {
+        position: absolute;
+        left: 50%;
+        margin-top: -1rem;
+        transform: translate(-50%, -50%);
+        text-shadow: 0 0 12px $deep-blue, 0 0 4px wheat;
+        font-size: 2.5rem;
+    }
+    h1 {
+        color: $neon-pink;
+        text-shadow: 0.25rem 0.25rem $electric-yellow, 0 0 4px wheat;
+        --underlineWidth: 100%;
+        --underlineMaxWidth: 14rem;
+        &::before {
+            transform: skew(-20deg);
+            background-color: $pure-blue;
+        }
+    }
+    div {
+        h2 {
+            margin-bottom: 4rem;
+            font-size: 2.75rem;
+            underline {
+                text-shadow: 0 0 1.5px wheat;
+                text-decoration: underline;
+                text-decoration-color: $soft-red;
+                text-decoration-thickness: 0.5rem;
+            }
+        }
+    }
+}
+
+#blackboard {
+    @extend %section;
+    @include glassEffect(52px, 125%);
+    padding-bottom: 8rem;
+    background-color: rgba($color: $off-blue, $alpha: 0.2);
+    text-align: center;
+    h1 {
+        color: $neon-red;
+        text-shadow: 0.25rem 0.25rem $electric-green, 0 0 4px wheat;
+        --underlineWidth: 100%;
+        --underlineMaxWidth: 22rem;
+        &::before {
+            transform: skew(20deg);
+            background-color: $pure-blue;
+        }
+    }
+    div {
+        @include glassEffect(22px, 100%);
+        background-color: rgba($color: $bluish-purple, $alpha: 0.1);
+        box-shadow: -1rem 1rem rgba($color: $neon-pink, $alpha: 0.2);
+        padding: 1rem;
+        margin: 2.5rem;
+        font-family: "Lato", sans-serif;
+        text-align: left;
+        @media (max-width: 500px) {
+            margin: 0rem;
+        }
+        div {
+            background-color: transparent;
+            box-shadow: none;
+            margin-bottom: 2rem;
+            font-size: 2.75rem;
+            a {
+                @include linkUnderline;
+                background-color: $dark-blue;
+                padding: 0.5rem;
+                color: var(--color);
+                text-shadow: -2px 2px var(--shadowColor), 0 0 1.5px wheat;
+                font-size: 2.75rem;
+            }
+            span {
+                margin-left: 1rem;
+                font-size: 2.25rem;
+            }
+        }
+        h3 {
+            font-size: 2rem;
+            text-align: center;
+            a {
+                @include linkUnderline;
+            }
+        }
+    }
+}
+
+#contact {
+    @extend %section;
+    @include glassEffect(52px, 125%);
+    padding-bottom: 4rem;
+    background-color: rgba($color: $off-green, $alpha: 0.1);
+    text-align: center;
+    h1 {
+        color: $neon-pink;
+        text-shadow: 0.25rem 0.25rem $electric-green, 0 0 4px wheat;
+        --underlineWidth: 100%;
+        --underlineMaxWidth: 14rem;
+        &::before {
+            transform: skew(20deg);
+            background-color: $pure-blue;
+        }
+    }
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: left;
+        div {
+            @include glassEffect(22px, 100%);
+            background-color: var(--color);
+            margin: 1rem;
+            padding: 2.5rem;
+            min-width: 10rem;
+            max-height: min-content;
+            font-family: "Lato", sans-serif;
+            font-size: 2rem;
+            text-shadow: 0 0 1.5px wheat;
+            line-height: 0;
+            box-shadow: -0.5rem 0.5rem black;
+            box-shadow: -0.5rem 0.5rem var(--shadowColor);
+            transition-property: box-shadow;
+            transition-duration: 0.2s;
+            @media (max-width: 500px) {
+                background-color: transparent;
+                max-height: fit-content;
+            }
+            &:hover {
+                box-shadow: -1rem 1rem black;
+                box-shadow: -1rem 1rem var(--shadowColor);
+            }
+        }
+    }
+}
+
+footer {
+    @extend %section;
+    @include glassEffect(52px, 125%);
+    position: relative;
+    min-height: 25vh;
+    border-top: none;
+    border-top-left-radius: 2.5rem;
+    border-top-right-radius: 2.5rem;
+    margin-top: -2rem;
+    margin-bottom: -0.5rem;
+    background-color: rgba($color: black, $alpha: 0.4);
+    text-align: center;
+    h1 {
+        color: $neon-pink;
+        text-shadow: 0.05rem 0.05rem $electric-green, 0 0 1px wheat;
+        font-size: 4rem;
+        font-family: "Norican", cursive;
+        line-height: 0.5rem;
+        --underlineWidth: 100%;
+        --underlineMaxWidth: 9.5rem;
+        &::before {
+            top: 0.85rem;
+            transform: skew(20deg) rotate(-8deg);
+            background-color: $off-green;
+        }
+    }
+    p {
+        display: flex;
+        justify-content: center;
+        color: whitesmoke;
+        span {
+            border-radius: 0.25rem;
+            box-shadow: -0.1rem 0.1rem $off-blue;
+            margin-left: 0.5rem;
+        }
+    }
+    span {
+        color: whitesmoke;
+        opacity: 0.75;
+        line-height: 0;
+    }
+}

@@ -1,0 +1,151 @@
+<!--
+nv0skar.github.io
+Copyright (C) 2022 Oscar
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Writing a short catchy title and a description and adding social media preview -->
+    <title>This is Oscar!</title>
+    <meta property="og:title" content="This is Oscar!">
+
+    <meta name="Just lookin' at the future with impatience">
+    <meta property="og:description" content="Just lookin' at the future with impatience">
+
+    <!-- Adding some scripting -->
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/animejs@3/lib/anime.min.js"></script>
+    <script async defer type="text/javascript" src="src/scripting.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Adding a cool emoji as favicon :) -->
+    <link rel="icon" href="assets/images/favicon.webp">
+
+    <!-- Adding some styling -->
+    <link rel="stylesheet" type="text/css" href="src/styling.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Norican&display=swap">
+    <meta name="theme-color" content="#0d1424">
+</head>
+
+<body>
+    <!-- Adding a loader -->
+    <noscript>
+        <style>
+            loader {
+                display: none;
+            }
+        </style>
+    </noscript>
+    <loader></loader>
+
+    <!-- Adding the head section -->
+    <main id="head">
+        <h1 data-ignore="true" id="head-title">
+            Oskar
+        </h1>
+    </main>
+
+    <!-- Adding the intro section -->
+    <section data-ignore="true" id="intro">
+        <span id="intro-arrow">⬇️</span>
+        <h1>
+            Hey 👋
+        </h1>
+        <div>
+            <h2>I am <underline>Oscar</underline>, a 16 year-old <underline>computer &
+                    science
+                </underline> enthusiast.</h2>
+            <h2>Livin' in <underline>Seville</underline>, 🇪🇸</h2>
+            <h2>Basically, ❤️ing everything which involves <underline>power</underline> ⚡️
+            </h2>
+        </div>
+    </section>
+
+    <!-- Adding the blackboard section -->
+    <section id="blackboard">
+        <h1>
+            Blackboard
+        </h1>
+        <h2>A sneak peek at my <underline>most personally influential projects</underline> 😮</h2>
+        <div>
+            <div><a style="--color: #99E7C8; --shadowColor: #2E37D1"
+                    href="https://github.com/nv0skar/Haski">Haski</a><span>an experimental hash-powered stock
+                    forecaster</span></div>
+            <div><a style="--color: #E8346A; --shadowColor: #DC777B"
+                    href="https://github.com/nv0skar/NoteFlier">NoteFlier</a><span>a tone generator with random
+                    presets</span></div>
+            <div><a style="--color: #d400ff; --shadowColor: #4328a6"
+                    href="https://github.com/nv0skar/Singular">Singular</a><span>a blockchain to enable individuals
+                    make
+                    their own coins</span></div>
+            <div><a style="--color: #3893D4; --shadowColor: #3815D4"
+                    href="https://github.com/nv0skar/SeekHub">SeekHub</a><span>a blazing-fast portfolio to publish a
+                    local's menu</span></div>
+            <h3>✨ <a href="https://github.com/nv0skar?tab=repositories">Discover more</a> ✨</h3>
+        </div>
+    </section>
+
+    <!-- Adding the contact section -->
+    <section id="contact">
+        <h1>
+            Say hello!
+        </h1>
+        <h2>
+            if you don't like <underline>meta</underline> don't click on ig 😕
+        </h2>
+        <div>
+            <div data-origin="nv0skar@tutanota.de" style="--color: #264EAC; --shadowColor: #193473"
+                onmouseover="changeOnHover(this)" onclick="window.open('mailto:nv0skar@tutanota.de');">
+                Mail
+            </div>
+            <div data-origin="@nv0skar" style="--color: #0D8CDB; --shadowColor: #09639B"
+                onmouseover="changeOnHover(this)" onclick="window.open('https://twitter.com/nv0skar');">
+                Twitter
+            </div>
+            <div data-origin="@nv0skar" style="--color: #5D477E; --shadowColor: #4A3864"
+                onmouseover="changeOnHover(this)" onclick="window.open('https://github.com/nv0skar');">
+                Github
+            </div>
+            <div data-origin="@nv0skar" style="--color: #3F27AB; --shadowColor: #251764"
+                onmouseover="changeOnHover(this)" onclick="window.open('https://dev.to/nv0skar');">
+                dev.to
+            </div>
+            <div data-origin="@nv0skar" style="--color: #CF1E59; --shadowColor: #93153F"
+                onmouseover="changeOnHover(this)" onclick="window.open('https://instagram.com/nv0skar');">
+                Instagram
+            </div>
+        </div>
+    </section>
+
+    <!-- Adding the outro -->
+    <footer>
+        <h1>Oskar</h1>
+        <p>Liked this? Give it some ❤️ on<a class="github-button" href="https://github.com/nv0skar/nv0skar.github.io"
+                data-color-scheme="no-preference: dark; light: light; dark: dark;" data-size="large"
+                aria-label="Star nv0skar/nv0skar.github.io on GitHub">Star</a></p>
+        <span>Copyright (C) 2022 Oscar 🐙</span>
+        <br>
+    </footer>
+
+</body>
+
+</html>
