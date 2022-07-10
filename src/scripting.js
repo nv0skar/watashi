@@ -62,7 +62,7 @@ const predefinedAnimations = {
       document.body.style["overflow"] = "scroll"; // Re-enable scrolling
       animations.underline(document.getElementById("head-title"), "spring(1, 100, 15, 0)", "100%") // Start main title's underline animation
       // Helper function for playing the arrow animation
-      this.playArrowAnimation = () => {
+      window.playArrowAnimation = () => {
         console.log("This is disable by default to improve performance 🚀, you may consider this an Easter Egg 😮")
         predefinedAnimations.arrow.play(); // Start arrow's animation
       }
@@ -98,7 +98,7 @@ const observedElements = new IntersectionObserver((entries) => {
   }
 })
 
-// Helper function that registers an observer to animatable elements
+// Helper function that registers an observer to elements
 const registerObserver = (sections = true) => {
   // Registers an event listener that triggers when a title is in the viewport
   for (element of document.getElementsByTagName("h1")) {
@@ -117,6 +117,18 @@ const registerObserver = (sections = true) => {
       }
     }
   }
+
+  // Registers an event listener that triggers when a link is clicked
+  for (element of document.getElementsByTagName("a")) {
+    element.addEventListener("click", (event) => {
+      let parentSection = event.target
+      while (parentSection != undefined) {
+        parentSection = parentSection.parentElement;
+        if ((parentSection.id == "blackboard") || (parentSection.id == "contact")) break;
+      }
+      if (parentSection != undefined) window.beampipe(parentSection.id);
+    })
+  }
 }
 
 // Helper function for changing the text of an hovered element
@@ -133,10 +145,10 @@ const onScroll = () => {
   // If load animation is still being played, skip it if the scrolling Y-Axis is not 0, also section animations will be disabled
   if (window.scrollY != 0 && !predefinedAnimations.loading.completed) {
     predefinedAnimations.loading.seek(predefinedAnimations.loading.duration);
-    registerObserver(false); // Register animatable elements to be observed
+    registerObserver(false); // Register target elements to be observed
     window.removeEventListener("scroll", onScroll); // No longer needed to listen to scroll events
   } else {
-    registerObserver(); // Register animatable elements to be observed
+    registerObserver(); // Register target elements to be observed
     window.removeEventListener("scroll", onScroll); // No longer needed to listen to scroll events
   }
 }
