@@ -129,6 +129,10 @@ h2 {
     font-size: 2.75rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 #head {
     @include wholeViewport();
     box-sizing: border-box;
@@ -168,8 +172,8 @@ h2 {
             }
         }
         position: absolute;
-        top: 16rem;
-        left: 16rem;
+        top: 25%;
+        left: 25%;
         transform: translate(-50%, -100%) skew(-20deg) scaleY(125%);
         color: $neon-red;
         //text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat; Is already defined at the glow animation!
@@ -324,8 +328,9 @@ h2 {
             padding: 2.5rem;
             min-width: 10rem;
             max-height: min-content;
-            font-family: "Lato", sans-serif;
-            font-size: 2rem;
+            font-size: 1.45rem;
+            font-family: "Press Start 2P", cursive;
+            letter-spacing: -0.05rem;
             text-shadow: 0 0 1.5px wheat;
             line-height: 0;
             box-shadow: -0.5rem 0.5rem black;

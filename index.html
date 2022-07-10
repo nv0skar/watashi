@@ -42,7 +42,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <link rel="stylesheet" type="text/css" href="src/styling.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Norican&display=swap">
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Norican&family=Press+Start+2P&display=swap">
     <meta name="theme-color" content="#0d1424">
 </head>
 
@@ -113,26 +114,36 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             if you don't like <underline>meta</underline> don't click on ig 😕
         </h2>
         <div>
-            <div data-origin="nv0skar@tutanota.de" style="--color: #264EAC; --shadowColor: #193473"
-                onmouseover="changeOnHover(this)" onclick="window.open('mailto:nv0skar@tutanota.de');">
-                Mail
-            </div>
-            <div data-origin="@nv0skar" style="--color: #0D8CDB; --shadowColor: #09639B"
-                onmouseover="changeOnHover(this)" onclick="window.open('https://twitter.com/nv0skar');">
-                Twitter
-            </div>
-            <div data-origin="@nv0skar" style="--color: #5D477E; --shadowColor: #4A3864"
-                onmouseover="changeOnHover(this)" onclick="window.open('https://github.com/nv0skar');">
-                Github
-            </div>
-            <div data-origin="@nv0skar" style="--color: #3F27AB; --shadowColor: #251764"
-                onmouseover="changeOnHover(this)" onclick="window.open('https://dev.to/nv0skar');">
-                dev.to
-            </div>
-            <div data-origin="@nv0skar" style="--color: #CF1E59; --shadowColor: #93153F"
-                onmouseover="changeOnHover(this)" onclick="window.open('https://instagram.com/nv0skar');">
-                Instagram
-            </div>
+            <a href="mailto:nv0skar@tutanota.de">
+                <div data-origin="nv0skar@tutanota.de" style="--color: #264EAC; --shadowColor: #193473"
+                    onmouseover="changeOnHover(this)">
+                    Mail
+                </div>
+            </a>
+            <a href="https://twitter.com/nv0skar">
+                <div data-origin="@nv0skar" style="--color: #0D8CDB; --shadowColor: #09639B"
+                    onmouseover="changeOnHover(this)">
+                    Twitter
+                </div>
+            </a>
+            <a href="https://github.com/nv0skar">
+                <div data-origin="@nv0skar" style="--color: #5D477E; --shadowColor: #4A3864"
+                    onmouseover="changeOnHover(this)">
+                    Github
+                </div>
+            </a>
+            <a href="https://dev.to/nv0skar">
+                <div data-origin="@nv0skar" style="--color: #3F27AB; --shadowColor: #251764"
+                    onmouseover="changeOnHover(this)">
+                    dev.to
+                </div>
+            </a>
+            <a href="https://instagram.com/nv0skar">
+                <div data-origin="@nv0skar" style="--color: #CF1E59; --shadowColor: #93153F"
+                    onmouseover="changeOnHover(this)">
+                    Instagram
+                </div>
+            </a>
         </div>
     </section>
 

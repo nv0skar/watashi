@@ -61,7 +61,11 @@ const predefinedAnimations = {
       document.getElementsByTagName("loader").item(0).style.display = "none"; // Hide the element
       document.body.style["overflow"] = "scroll"; // Re-enable scrolling
       animations.underline(document.getElementById("head-title"), "spring(1, 100, 15, 0)", "100%") // Start main title's underline animation
-      predefinedAnimations.arrow.play(); // Start arrow's animation
+      // Helper function for playing the arrow animation
+      this.playArrowAnimation = () => {
+        console.log("This is disable by default to improve performance 🚀, you may consider this an Easter Egg 😮")
+        predefinedAnimations.arrow.play(); // Start arrow's animation
+      }
     }
   }),
   arrow: anime({
