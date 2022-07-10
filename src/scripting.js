@@ -1,4 +1,4 @@
-// nv0skar.github.io
+// whoami
 // Copyright (C) 2022 Oscar
 //
 // This program is free software: you can redistribute it and/or modify
