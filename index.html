@@ -34,7 +34,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/animejs@3/lib/anime.min.js"></script>
     <script async defer type="text/javascript" src="src/scripting.js"></script>
     <script async defer type="text/javascript" src="https://buttons.github.io/buttons.js"></script>
-    <script async defer type="text/javascript" src="https://beampipe.io/js/tracker.js" data-beampipe-domain=""></script>
+    <script async defer type="text/javascript" src="https://beampipe.io/js/tracker.js" id="tracker"
+        data-beampipe-domain=""></script>
 
     <!-- Adding a cool emoji as favicon :) -->
     <link rel="icon" href="assets/images/favicon.webp">
@@ -68,24 +69,43 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
     <!-- Adding the intro section -->
     <section data-ignore="true" id="intro">
-        <span id="intro-arrow">⬇️</span>
+        <span id="intro-arrow">👇</span>
         <h1>
-            Hey 👋
+            I am...
         </h1>
         <div>
-            <h2>I am <underline>Oscar</underline>, a 16 year-old <underline>computer &
-                    science
-                </underline> enthusiast.</h2>
-            <h2>Livin' in <underline>Seville</underline>, 🇪🇸</h2>
-            <h2>Basically, ❤️ing everything which involves <underline>power</underline> ⚡️
+            <h2>...<a id="intro-age">since I born (2006) a</a>
+                <underline>science & computer
+                    enthusiast</underline>.
             </h2>
+            <h2>...livin' in <span>
+                    Seville
+                </span>
+            </h2>
+            <h2>...basically, ❤️ing everything which involves <underline>power</underline> ⚡️
+            </h2>
+        </div>
+    </section>
+
+    <!-- Adding the languages section -->
+    <section id="languages">
+        <h1>In/Output</h1>
+        <div>
+            <h3>I talk the <underline>english</underline> and <underline>español</underline> language 🫠</h3>
+            <h3>Loving <underline>Rust</underline>-lang! 🦀</h3>
+            <h3>Native speaker in <underline>Python</underline> 🐍</h3>
+            <h3>A little bit of the <underline>Swift</underline> language 🦜</h3>
+            <h3>Being a <underline>Typescript</underline>-talker 💪</h3>
+            <h3>I defend myself at <underline>C</underline> and <underline>C++</underline>, <underline>not an extensive
+                    speaker</underline> though 😳
+            </h3>
         </div>
     </section>
 
     <!-- Adding the blackboard section -->
     <section id="blackboard">
         <h1>
-            Blackboard
+            Dive into
         </h1>
         <h2>A sneak peek at my <underline>most personally influential projects</underline> 😮</h2>
         <div>
@@ -96,11 +116,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                     href="https://github.com/nv0skar/NoteFlier">NoteFlier</a><span>a tone generator with random
                     presets</span></div>
             <div><a style="--color: #d400ff; --shadowColor: #4328a6"
-                    href="https://github.com/nv0skar/Singular">Singular</a><span>a blockchain to enable individuals
+                    href="https://github.com/nv0skar/Singular">Singular</a><span>a blockchain to enable
+                    individuals
                     make
                     their own coins</span></div>
             <div><a style="--color: #3893D4; --shadowColor: #3815D4"
-                    href="https://github.com/nv0skar/SeekHub">SeekHub</a><span>a blazing-fast portfolio to publish a
+                    href="https://github.com/nv0skar/SeekHub">SeekHub</a><span>a blazing-fast portfolio to
+                    publish a
                     local's menu</span></div>
             <h3>✨ <a href="https://github.com/nv0skar?tab=repositories">Discover more</a> ✨</h3>
         </div>
@@ -109,11 +131,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <!-- Adding the contact section -->
     <section id="contact">
         <h1>
-            Say hello!
+            Say hi!
         </h1>
-        <h2>
-            if you don't like <underline>meta</underline> don't click on ig 😕
-        </h2>
+        <h2 id="contact-subtitle"></h2>
         <div>
             <a href="mailto:nv0skar@tutanota.de">
                 <div data-origin="nv0skar@tutanota.de" style="--color: #264EAC; --shadowColor: #193473"

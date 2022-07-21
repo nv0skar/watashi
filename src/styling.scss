@@ -19,6 +19,7 @@ $soft-red: #ff4949;
 $neon-red: #ff4766;
 $electric-yellow: #ffff00;
 $electric-green: #50ff00;
+$washed-green: #388660;
 $off-green: #004032;
 $neon-pink: #ff48c4;
 $electric-blue: #00ffff;
@@ -27,6 +28,7 @@ $deep-blue: #000040;
 $dystopian-blue: #192747;
 $dark-blue: #0d1424;
 $off-blue: #003740;
+$washed-blue: #1c1470;
 $bluish-purple: #7f00ff;
 $deep-purple: #420042;
 
@@ -111,15 +113,19 @@ body {
 
 h1 {
     position: relative;
-    font-size: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 4.85rem;
     letter-spacing: -0.05rem;
     &::before {
         content: "";
+        display: inline-block;
         position: absolute;
         bottom: 0rem;
         width: var(--underlineWidth);
         max-width: var(--underlineMaxWidth);
         height: 1.5rem;
+        transform-origin: 0 0;
         border-radius: 0.25rem;
         z-index: -1;
     }
@@ -161,43 +167,42 @@ a {
     h1 {
         @keyframes glow {
             from {
-                text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat,
-                    0 0 5px rgba($color: white, $alpha: 0.1), 0 0 15px rgba($color: whitesmoke, $alpha: 0.2),
-                    0 0 25px rgba($color: wheat, $alpha: 0.3);
+                text-shadow: 0.2rem 0.2rem 2.5px $bluish-purple, 0 0 4px wheat, 0 0 5px rgba($color: white, $alpha: 0.1),
+                    0 0 10px rgba($color: whitesmoke, $alpha: 0.2), 0 0 30px rgba($color: wheat, $alpha: 0.3);
             }
             to {
-                text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat,
-                    0 0 8px rgba($color: white, $alpha: 0.1), 0 0 18px rgba($color: whitesmoke, $alpha: 0.2),
-                    0 0 28px rgba($color: wheat, $alpha: 0.3);
+                text-shadow: 0.2rem 0.2rem 2.5px $bluish-purple, 0 0 4px wheat,
+                    0 0 10px rgba($color: white, $alpha: 0.1), 0 0 20px rgba($color: whitesmoke, $alpha: 0.2),
+                    0 0 40px rgba($color: wheat, $alpha: 0.3);
             }
         }
         position: absolute;
         top: 25%;
         left: 25%;
-        transform: translate(-50%, -100%) skew(-20deg) scaleY(125%);
-        color: $neon-red;
-        //text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat; Is already defined at the glow animation!
+        transform: translate(-50%, -100%) skew(-20deg) scale(110%, 125%);
+        color: $electric-blue;
+        //text-shadow: 0.15rem 0.15rem 2.5px $electric-red, 0 0 4px wheat; Is already defined within the glow animation!
         animation: glow 1.5s ease-in-out infinite alternate;
         font-size: 7.5rem;
         font-family: "Norican", cursive;
         letter-spacing: -0.25rem;
         --underlineWidth: 100%;
         mix-blend-mode: hard-light;
-        filter: contrast(180%) brightness(175%);
+        filter: contrast(180%) brightness(150%);
         @media (max-width: 500px) {
             top: 50%;
             left: 50%;
         }
         &::before {
             content: "";
+            opacity: 0.5;
             position: absolute;
             left: 0.25rem;
-            bottom: 0.75rem;
+            bottom: 1.5rem;
             width: var(--underlineWidth);
             height: 2.5rem;
-            transform: skew(50deg) rotate(-8deg);
-            transform-origin: 0 0;
-            background-color: $bluish-purple;
+            transform: skew(50deg) rotate(-4deg);
+            background-color: $electric-blue;
             border-radius: 0.25rem;
             z-index: -1;
         }
@@ -213,33 +218,90 @@ a {
     background-color: rgba($color: $deep-purple, $alpha: 0.1);
     margin-top: -3.5rem;
     padding-top: 1rem;
-    span {
+    text-align: center;
+    #intro-arrow {
         position: absolute;
         left: 50%;
         margin-top: -1rem;
         transform: translate(-50%, -50%);
         text-shadow: 0 0 12px $deep-blue, 0 0 4px wheat;
-        font-size: 2.5rem;
+        font-size: 4rem;
     }
     h1 {
-        color: $neon-pink;
-        text-shadow: 0.25rem 0.25rem $electric-yellow, 0 0 4px wheat;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        color: $electric-blue;
+        text-shadow: 0.25rem 0.25rem $washed-green, 0 0 4px wheat;
         --underlineWidth: 100%;
         --underlineMaxWidth: 14rem;
         &::before {
             transform: skew(-20deg);
-            background-color: $pure-blue;
+            background-color: $dystopian-blue;
         }
     }
     div {
+        padding-bottom: 3rem;
+        margin: 0;
+        font-size: 2.75rem;
+        @media (max-width: 500px) {
+            margin: 0rem;
+        }
         h2 {
-            margin-bottom: 4rem;
-            font-size: 2.75rem;
-            underline {
-                text-shadow: 0 0 1.5px wheat;
-                text-decoration: underline;
-                text-decoration-color: $soft-red;
-                text-decoration-thickness: 0.5rem;
+            letter-spacing: 0.25rem;
+            span {
+                background: linear-gradient(
+                    rgba(red, 0.75) 0% 48%,
+                    rgba(yellow, 0.75) 48% 66%,
+                    rgba(red, 0.75) 66% 100%
+                ); // The colors are not evenly distributed intentionally
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: 4px -4px white;
+            }
+        }
+    }
+}
+
+#languages {
+    @extend %section;
+    @include glassEffect(52px, 125%);
+    padding-bottom: 4rem;
+    background-color: rgba($color: $off-blue, $alpha: 0.2);
+    text-align: center;
+    h1 {
+        color: $neon-red;
+        text-shadow: 0.25rem 0.25rem $electric-blue, 0 0 4px wheat;
+        --underlineWidth: 100%;
+        --underlineMaxWidth: 23rem;
+        &::before {
+            transform: skew(20deg);
+            background-color: $neon-pink;
+        }
+    }
+    div {
+        display: flex;
+        margin: 2.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: left;
+        @media (max-width: 500px) {
+            margin: 0rem;
+        }
+        h3 {
+            @include glassEffect(22px, 100%);
+            background-color: rgba($color: $dark-blue, $alpha: 0.25);
+            margin: 1rem;
+            padding: 2.5rem;
+            min-width: 10rem;
+            max-height: min-content;
+            font-size: 2.5rem;
+            letter-spacing: -0.05rem;
+            text-shadow: 0 0 1.5px wheat;
+            box-shadow: -0.5rem 0.5rem $neon-red;
+            @media (max-width: 500px) {
+                background-color: transparent;
+                max-height: fit-content;
             }
         }
     }
@@ -248,17 +310,17 @@ a {
 #blackboard {
     @extend %section;
     @include glassEffect(52px, 125%);
-    padding-bottom: 8rem;
-    background-color: rgba($color: $off-blue, $alpha: 0.2);
+    padding-bottom: 7rem;
+    background-color: rgba($color: $off-green, $alpha: 0.2);
     text-align: center;
     h1 {
         color: $neon-red;
         text-shadow: 0.25rem 0.25rem $electric-green, 0 0 4px wheat;
         --underlineWidth: 100%;
-        --underlineMaxWidth: 22rem;
+        --underlineMaxWidth: 18rem;
         &::before {
             transform: skew(20deg);
-            background-color: $pure-blue;
+            background-color: $neon-pink;
         }
     }
     div {
@@ -303,17 +365,17 @@ a {
 #contact {
     @extend %section;
     @include glassEffect(52px, 125%);
-    padding-bottom: 4rem;
+    padding-bottom: 7rem;
     background-color: rgba($color: $off-green, $alpha: 0.1);
     text-align: center;
     h1 {
-        color: $neon-pink;
-        text-shadow: 0.25rem 0.25rem $electric-green, 0 0 4px wheat;
+        color: $electric-blue;
+        text-shadow: 0.25rem 0.25rem $bluish-purple, 0 0 4px wheat;
         --underlineWidth: 100%;
         --underlineMaxWidth: 14rem;
         &::before {
             transform: skew(20deg);
-            background-color: $pure-blue;
+            background-color: $washed-blue;
         }
     }
     div {
@@ -362,8 +424,10 @@ footer {
     background-color: rgba($color: black, $alpha: 0.4);
     text-align: center;
     h1 {
-        color: $neon-pink;
-        text-shadow: 0.05rem 0.05rem $electric-green, 0 0 1px wheat;
+        margin-bottom: 3.25rem;
+        transform: skew(-20deg);
+        color: $electric-blue;
+        text-shadow: 0.1rem 0.1rem $bluish-purple, 0 0 1px wheat;
         font-size: 4rem;
         font-family: "Norican", cursive;
         line-height: 0.5rem;
@@ -371,8 +435,8 @@ footer {
         --underlineMaxWidth: 9.5rem;
         &::before {
             top: 0.85rem;
-            transform: skew(20deg) rotate(-8deg);
-            background-color: $off-green;
+            transform: skew(20deg) rotate(-4deg);
+            background-color: $dystopian-blue;
         }
     }
     p {

@@ -14,6 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+// Pre-uploading constants
+const host = ""
+
+// Defining contact subtitles
+const contactSubtitles = [
+  "if you don't like <underline>meta</underline>, don't click on ig 🕵️",
+  "i know, that's <underline>not google's mail</underline> 😉",
+  "pls, <underline>don't send</underline> cat pics 🙏",
+  "my username <underline>ain't that tricky</underline> to remember, right?"
+]
+
 // Defining animations
 const animations = {
   appear: (element, easing = "easeOutQuart", delay = 200) => {
@@ -84,10 +95,10 @@ const observedElements = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       // Don't play animation if the element is set not to do so
       if (!element.getAttribute("data-ignore")) {
-        if (entry.target.tagName.toLowerCase() == "section") {
+        if (entry.target.tagName.toLowerCase() === "section") {
           animations.appear(entry.target);
           observedElements.unobserve(entry.target);
-        } else if (entry.target.tagName.toLowerCase() == "h1") {
+        } else if (entry.target.tagName.toLowerCase() === "h1") {
           animations.underline(entry.target)
           observedElements.unobserve(entry.target);
         }
@@ -98,8 +109,15 @@ const observedElements = new IntersectionObserver((entries) => {
   }
 })
 
+// Helper function that updates dynamic content
+const init = () => {
+  const myAge = ((new Date()).getUTCFullYear() - 2006) // Calculate age based on system's date
+  document.getElementById("intro-age").innerHTML = `a ${myAge >= 16 ? myAge : "16"} year-old`; // Set age
+  document.getElementById("tracker").setAttribute("data-beampipe-domain", host); // Set website's hostname for tracker
+}
+
 // Helper function that registers an observer to elements
-const registerObserver = (sections = true) => {
+const registerObserver = () => {
   // Registers an event listener that triggers when a title is in the viewport
   for (element of document.getElementsByTagName("h1")) {
     if (!element.getAttribute("data-ignore")) {
@@ -109,12 +127,10 @@ const registerObserver = (sections = true) => {
   }
 
   // Registers an event listener that triggers when a section is in the viewport
-  if (sections) {
-    for (element of document.getElementsByTagName("section")) {
-      if (!element.getAttribute("data-ignore")) {
-        element.style.setProperty("opacity", 0); // Set the element transparent
-        observedElements.observe(element)
-      }
+  for (element of document.getElementsByTagName("section")) {
+    if (!element.getAttribute("data-ignore")) {
+      element.style.setProperty("opacity", 0); // Set the element transparent
+      observedElements.observe(element)
     }
   }
 
@@ -145,7 +161,7 @@ const onScroll = () => {
   // If load animation is still being played, skip it if the scrolling Y-Axis is not 0, also section animations will be disabled
   if (window.scrollY != 0 && !predefinedAnimations.loading.completed) {
     predefinedAnimations.loading.seek(predefinedAnimations.loading.duration);
-    registerObserver(false); // Register target elements to be observed
+    registerObserver(); // Register target elements to be observed
     window.removeEventListener("scroll", onScroll); // No longer needed to listen to scroll events
   } else {
     registerObserver(); // Register target elements to be observed
@@ -155,8 +171,12 @@ const onScroll = () => {
 
 
 window.addEventListener("load", () => {
+  init() // Set dynamic content
   document.getElementById("head-title").style.setProperty("--underlineWidth", "0%"); // Set title's underline's width to 0
-  predefinedAnimations.loading.play(); // Playing load finished animation
+  // If the screen width is less than 500px, skip the loading animation
+  if (window.innerWidth > 500) predefinedAnimations.loading.play(); // Playing load finished animation
+  else predefinedAnimations.loading.complete();
+  document.getElementById("contact-subtitle").innerHTML = contactSubtitles[Math.floor(Math.random() * contactSubtitles.length)]; // Set random contact section's subtitles
 })
 
 window.addEventListener("scroll", onScroll)
