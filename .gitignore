@@ -1,3 +1,5 @@
 **/.vscode
 **/.DS_Store
-**/styling.css*
+**/node_modules
+**/dist
+**/.parcel-cache

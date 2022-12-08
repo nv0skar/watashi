@@ -1,0 +1,376 @@
+// whoami
+// Copyright (C) 2022 Oscar
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+$text-color: #cdbeee;
+$text-shadow: #3c1f7a;
+$link-color: #1ea888;
+$background-color: #211245;
+
+$header-links-color: #cdbeee;
+$header-links-color-shadow: #42248a;
+$header-links-background-color: #2e1c51;
+$header-status-background-color: #2c274e;
+
+$head-text-color: #cdbeee;
+$head-text-color-shadow: #3c1f7a;
+
+$summary-content-background: #091b25;
+$summary-content-border: #aa2b7e;
+$summary-background: #42248a;
+
+$contact-content-border: #aa2b7e;
+$contact-content-background: #2e1c51;
+$contact-background-gradient-1: #281f5a;
+$contact-background-gradient-2: #402773;
+
+$footer-border: #bcd2ee;
+$footer-background-gradient-1: #44248d;
+$footer-background-gradient-2: #1ea888;
+
+* {
+    font-family: "Fira Sans";
+    text-overflow: "";
+    cursor: default;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+%section {
+    content-visibility: auto;
+    min-width: 100%;
+    min-height: min-content;
+    box-sizing: border-box;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    padding: 4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-family: "Fira Sans", sans-serif;
+    will-change: opacity;
+    transition: opacity 250ms ease-in-out;
+}
+
+.sectionHidden {
+    opacity: 0;
+}
+
+@mixin wholeViewport() {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+@mixin glassEffect($blur: 1px, $saturate: 100%) {
+    backdrop-filter: blur($blur) saturate($saturate);
+    -webkit-backdrop-filter: blur($blur) saturate($saturate);
+}
+
+loader {
+    @include glassEffect(128px, 100%);
+    --animationDuration: 500ms;
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(transparent 0%, black 100%);
+    will-change: opacity;
+    transition: opacity var(--animationDuration) ease-in-out;
+}
+
+.loaderHidden {
+    opacity: 0;
+}
+
+#noscript {
+    z-index: 2;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    height: 3.5rem;
+    bottom: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: red;
+}
+
+body {
+    margin: 0;
+    color: $text-color;
+    background-color: $background-color;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+h1 {
+    position: relative;
+    margin: 3rem;
+    text-shadow: 0.3rem 0.3rem $text-shadow, 0 0 4px black, 0 0 4.5px wheat;
+    font-size: 5.75rem;
+    font-family: "Zen Dots";
+    letter-spacing: -0.25rem;
+    @media (max-width: 640px) {
+        margin: 1rem;
+        font-size: 3.25rem;
+    }
+}
+
+h2,
+h3,
+p {
+    color: $text-color;
+}
+
+a {
+    color: $link-color;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-skip: none;
+    &:hover {
+        text-decoration-thickness: 0.4rem;
+    }
+}
+
+header {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min-content;
+    will-change: backdrop-filter;
+    transition: backdrop-filter 500ms ease-in-out;
+    #status {
+        display: none;
+        align-items: center;
+        box-sizing: border-box;
+        height: 2.5rem;
+        padding: 1rem;
+        text-shadow: 0.1rem 0.1rem $text-shadow, 0 0 2px black;
+        font-weight: bold;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+        background-color: rgba($color: $header-status-background-color, $alpha: 0.75);
+        pre {
+            animation: scrollText 60s infinite linear;
+            @keyframes scrollText {
+                0% {
+                    transform: translateX(0%);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+        }
+    }
+    div {
+        display: flex;
+        align-items: center;
+        h1 {
+            margin: 1rem;
+            padding-left: env(safe-area-inset-left);
+            max-width: min-content;
+            max-height: min-content;
+            font-size: 2rem;
+            font-family: "Zen Dots";
+            text-align: left;
+            letter-spacing: -0.25rem;
+        }
+        #links {
+            width: 100%;
+            justify-content: right;
+            padding: 1rem;
+            font-size: 1.1rem;
+            a {
+                text-decoration: none;
+                color: $header-links-color;
+                text-shadow: 0.1rem 0.1rem $header-links-color-shadow, 0 0 4px black;
+                font-weight: bold;
+                will-change: background-color;
+                transition: background-color 250ms linear;
+                &:hover {
+                    background-color: rgba($color: $header-links-background-color, $alpha: 0.1);
+                }
+            }
+        }
+    }
+}
+
+.headerBackground {
+    @include glassEffect(52px, 125%);
+    #status {
+        display: flex;
+    }
+}
+
+#head {
+    @include wholeViewport();
+    display: flex;
+    justify-content: left;
+    align-items: end;
+    box-sizing: border-box;
+    #headBackground {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-image: url("../assets/images/portrait.png?as=avif&quality=25"),
+            url("../assets/images/portrait.png?as=webp&quality=25");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+    #introText {
+        margin: 4rem;
+        color: $head-text-color;
+        text-shadow: 0.35rem 0.35rem $head-text-color-shadow, 0 0 4px black;
+        font-family: "Zen Dots";
+        letter-spacing: -0.25rem;
+        @media (max-width: 640px) {
+            margin: 2rem;
+        }
+    }
+}
+
+#summary {
+    @extend %section;
+    @include glassEffect(128px, 125%);
+    background-color: rgba($color: $summary-background, $alpha: 0.25);
+    text-align: center;
+    div {
+        display: flex;
+        margin: 2.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: left;
+        @media (max-width: 640px) {
+            margin: 0rem;
+        }
+        h3 {
+            @include glassEffect(42px, 100%);
+            background-color: rgba($color: $summary-content-background, $alpha: 0.25);
+            margin: 0.75rem;
+            padding: 2.5rem;
+            min-width: 10rem;
+            max-height: min-content;
+            font-size: 2.5rem;
+            letter-spacing: -0.05rem;
+            text-shadow: 0 0 1.5px $text-shadow;
+            border-left: solid 0.5rem $summary-content-border;
+            border-bottom: solid 0.5rem $summary-content-border;
+            border-top-right-radius: 1rem;
+            @media (max-width: 640px) {
+                background-color: transparent;
+                max-height: fit-content;
+            }
+        }
+    }
+}
+
+#contact {
+    @extend %section;
+    @include glassEffect(128px, 125%);
+    background: linear-gradient(70deg, $contact-background-gradient-1, $contact-background-gradient-2);
+    text-align: center;
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+    h2 {
+        margin-top: 0.5rem;
+        font-size: 2.25rem;
+    }
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        a {
+            text-decoration: none;
+            margin: 1.5rem;
+            padding: 2.5rem;
+            font-family: "Press Start 2P";
+            letter-spacing: -0.2rem;
+            text-shadow: 0 0 1.5px $text-shadow;
+            background-color: $contact-content-background;
+            text-align: left;
+            border: dotted 0.55rem $contact-content-border;
+            &:hover {
+                border-width: 0.6rem;
+            }
+            h3 {
+                @include glassEffect(22px, 100%);
+                margin: 2rem;
+                color: $text-color;
+                text-shadow: 0.25rem 0.25rem $text-shadow, 0 0 4px black;
+                font-size: 2.5rem;
+                font-family: "Press Start 2P";
+                @media (max-width: 640px) {
+                    margin: 0.75rem;
+                    font-size: 2rem;
+                }
+            }
+            p {
+                @include glassEffect(22px, 100%);
+                margin: 2rem;
+                font-size: 1.5rem;
+                font-family: "Press Start 2P";
+                @media (max-width: 640px) {
+                    margin: 0.75rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    @extend %section;
+    @include glassEffect(128px, 125%);
+    position: relative;
+    min-height: unset;
+    max-height: min-content;
+    padding: 4rem;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-top: 0.45rem solid $footer-border;
+    background: radial-gradient(transparent 0%, rgba($color: black, $alpha: 0.75) 100%),
+        linear-gradient(70deg, $footer-background-gradient-1, $footer-background-gradient-2);
+    h1 {
+        margin: 0.25rem;
+        font-size: 4rem;
+        font-family: "Zen Dots";
+        text-shadow: 0.3rem 0.3rem $text-shadow, 0 0 4px black, 0 0 6px wheat;
+        letter-spacing: -0.25rem;
+    }
+    #footerNotice {
+        opacity: 0.75;
+        line-height: 0;
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "whoami",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "parcel": "latest",
+    "process": "^0.11.10",
+    "sharp": "^0.31.2"
+  },
+  "dependencies": {
+    "@solonovamax/parcel-transformer-google-fonts": "^0.1.5",
+    "grapheme-splitter": "^1.0.4",
+    "powerglitch": "^2.3.0",
+    "rellax": "^1.12.1",
+    "typewriter-effect": "^2.19.0"
+  }
+}
