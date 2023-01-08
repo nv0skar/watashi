@@ -14,12 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import { status, iAm, quotes } from "./config.js"
+import * as config from "./config.js";
+import { currentPage } from "./router.js";
 
 import Typewriter from 'typewriter-effect/dist/core';
 import GraphemeSplitter from "grapheme-splitter";
-import Rellax from "rellax"
-import { PowerGlitch } from "powerglitch"
+import Rellax from "rellax";
+import { PowerGlitch } from "powerglitch";
 
 export function finishLoad(element, targetClass, scrollingDisablingClass) {
     setTimeout(() => {
@@ -36,11 +37,15 @@ export function finishLoad(element, targetClass, scrollingDisablingClass) {
     }, 400);
 }
 
-export function headerBehaviour(element, transparentTo) {
+export function headerBehaviour(element, disableBackgroundRemoval, status) {
+    let transparentHeight = window.innerHeight / 4;
     let lastPosition = 0;
-    let transparentHeight = transparentTo.clientHeight / 4;
     if (window.scrollY <= transparentHeight) {
-        element.classList.remove("headerBackground")
+        status.classList.remove("statusShow");
+        currentPage()
+        if (currentPage() != disableBackgroundRemoval) {
+            element.classList.remove("headerBackground");
+        }
     }
     window.addEventListener('scroll', () => {
         if (Math.abs(window.scrollY - lastPosition) >= 15) {
@@ -57,10 +62,14 @@ export function headerBehaviour(element, transparentTo) {
             }
         }
         if (!element.hidden) {
-            if (window.scrollY >= transparentHeight) {
+            if (window.scrollY >= transparentHeight || currentPage() == disableBackgroundRemoval) {
+                status.classList.add("statusShow");
                 element.classList.add("headerBackground")
             } else {
-                element.classList.remove("headerBackground")
+                status.classList.remove("statusShow");
+                if (currentPage() != disableBackgroundRemoval) {
+                    element.classList.remove("headerBackground")
+                }
             }
         }
         lastPosition = window.scrollY;
@@ -73,13 +82,13 @@ export function statusSet(element) {
         const spaces = " ".repeat(size);
         return spaces + char + spaces
     }
-    status.forEach((state) => {
+    config.status.forEach((state) => {
         completeText = completeText.concat(completeText != "" ? encapsulateSpaces("●", 5) : "").concat(state);
     })
     element.innerHTML = completeText;
 }
 
-export function appearingSection(targetClass) {
+export function appearingContent(elements, targetClass) {
     const onScreen = new IntersectionObserver((elements) => {
         elements.forEach((element) => {
             if (element.isIntersecting) {
@@ -89,7 +98,7 @@ export function appearingSection(targetClass) {
     }, {
         threshold: 0.1
     })
-    document.querySelectorAll("section").forEach((element) => {
+    elements.forEach((element) => {
         element.classList.add(targetClass);
         onScreen.observe(element)
     })
@@ -152,7 +161,7 @@ export function whoAmI(element) {
         loop: true,
         stringSplitter: splitter
     });
-    iAm.forEach((phrase) => {
+    config.iAm.forEach((phrase) => {
         effect.typeString(phrase).pauseFor(1000).deleteAll();
     })
     const onScreen = new IntersectionObserver((elements) => {
@@ -170,7 +179,7 @@ export function whoAmI(element) {
 }
 
 export function randomQuote(element) {
-    element.innerHTML = quotes[Math.floor(Math.random() * quotes.length)]
+    element.innerHTML = config.quotes[Math.floor(Math.random() * config.quotes.length)]
 }
 
 export function glitch(element, timeSpan = 0.5) {

@@ -14,20 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-$text-color: #cdbeee;
-$text-shadow: #3c1f7a;
-$link-color: #1ea888;
-$background-color: #211245;
-
+$header-status-text-color: #cdbeee;
+$header-status-border-color: #392356;
+$header-status-background-color: #593786;
+$header-title-color: #cdbeee;
+$header-title-shadow-color: #3c1f7a;
 $header-links-color: #cdbeee;
 $header-links-color-shadow: #42248a;
 $header-links-background-color: #2e1c51;
-$header-status-border-color: #392356;
-$header-status-background-color: #593786;
 
-$head-text-color: #cdbeee;
-$head-text-color-shadow: #3c1f7a;
+$about-me-text-color: #cdbeee;
+$about-me-text-shadow: #3c1f7a;
+$about-me-link-color: #1ea888;
+$about-me-background-color: #211245;
 
+$notepad-article-border: #bcd2ee;
+$notepad-article-border-light: #0b1b2d;
+$notepad-article-border-dark: #ebbe8e;
+$notepad-article-content-background: #987959;
+$notepad-text-color-light: #0b1b2d;
+$notepad-text-color-dark: #ebbe8e;
+$notepad-background-light: #ebbc8c;
+$notepad-background-dark: black;
 $summary-content-background: #091b25;
 $summary-content-border: #aa2b7e;
 $summary-background: #42248a;
@@ -38,6 +46,9 @@ $contact-background-gradient-1: #281f5a;
 $contact-background-gradient-2: #402773;
 
 $footer-border: #bcd2ee;
+$footer-text-color: #cdbeee;
+$footer-text-shadow-color: #3c1f7a;
+$footer-link-color: #74ffff;
 $footer-background-overlay: #87377e;
 $footer-background-gradient-1: #4f359b;
 $footer-background-gradient-2: #7d6f86;
@@ -52,14 +63,12 @@ html {
     scroll-behavior: smooth;
 }
 
-%section {
+%content {
     content-visibility: auto;
     min-width: 100%;
     min-height: min-content;
     box-sizing: border-box;
-    padding: 4rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 4rem 0.5rem;
     padding-right: env(safe-area-inset-right);
     padding-left: env(safe-area-inset-left);
     font-family: "Fira Sans", sans-serif;
@@ -67,7 +76,12 @@ html {
     transition: opacity 250ms ease-in-out;
 }
 
-.sectionHidden {
+%appearingContent {
+    will-change: opacity;
+    transition: opacity 250ms ease-in-out;
+}
+
+.contentHidden {
     opacity: 0;
 }
 
@@ -84,7 +98,7 @@ html {
     -webkit-backdrop-filter: blur($blur) saturate($saturate);
 }
 
-loader {
+page-loader {
     @include glassEffect(128px, 100%);
     --animationDuration: 500ms;
     z-index: 2;
@@ -112,6 +126,7 @@ loader {
     width: 100%;
     height: auto;
     bottom: 0;
+    color: white;
     font-weight: bold;
     font-size: 1rem;
     background-color: red;
@@ -119,42 +134,10 @@ loader {
 
 body {
     margin: 0;
-    color: $text-color;
-    background-color: $background-color;
     overflow-x: hidden;
     scrollbar-width: none;
     &::-webkit-scrollbar {
         display: none;
-    }
-}
-
-h1 {
-    position: relative;
-    margin: 3rem;
-    text-shadow: 0.3rem 0.3rem $text-shadow, 0 0 4px black, 0 0 4.5px wheat;
-    font-size: 5.75rem;
-    font-family: "Zen Dots";
-    letter-spacing: -0.25rem;
-    @media (max-width: 640px) {
-        margin: 1rem;
-        font-size: 3.25rem;
-    }
-}
-
-h2,
-h3,
-p {
-    color: $text-color;
-}
-
-a {
-    color: $link-color;
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-thickness: 0.2rem;
-    text-decoration-skip: none;
-    &:hover {
-        text-decoration-thickness: 0.4rem;
     }
 }
 
@@ -174,7 +157,8 @@ header {
         box-sizing: border-box;
         height: 2.5rem;
         padding: 1rem;
-        text-shadow: 0.1rem 0.1rem $text-shadow, 0 0 2px black;
+        color: $header-status-text-color;
+        text-shadow: 0.1rem 0.1rem $about-me-text-shadow, 0 0 2px black;
         font-weight: bold;
         font-size: 1rem;
         text-transform: uppercase;
@@ -200,6 +184,8 @@ header {
             margin: 1rem;
             max-width: min-content;
             max-height: min-content;
+            color: $header-title-color;
+            text-shadow: 0.3rem 0.3rem $header-title-shadow-color, 0 0 4px black, 0 0 4.5px wheat;
             font-size: 2rem;
             font-family: "Zen Dots";
             text-align: left;
@@ -227,35 +213,203 @@ header {
 
 .headerBackground {
     @include glassEffect(52px, 125%);
-    #status {
-        display: flex;
+}
+
+.statusShow {
+    display: flex !important;
+}
+
+#notepad {
+    @extend %content;
+    min-height: 100vh;
+    text-align: left;
+    color: $notepad-text-color-light;
+    background-color: $notepad-background-light;
+    @media (prefers-color-scheme: dark) {
+        color: $notepad-text-color-dark;
+        background-color: $notepad-background-dark;
+    }
+    h1 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #notepadNote {
+        margin: 2rem 1.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 0.2rem solid;
+        border-bottom-color: $notepad-article-border-light;
+        @media (prefers-color-scheme: dark) {
+            border-bottom-color: $notepad-article-border-dark;
+        }
+        .info {
+            opacity: 0.85;
+            text-align: right;
+            * {
+                margin: 0;
+            }
+            a {
+                color: inherit;
+            }
+        }
+        article {
+            .info {
+                display: flex;
+                align-items: center;
+                margin: 0 0 1rem;
+                &::before {
+                    content: "";
+                    flex: 1;
+                    height: 0.15rem;
+                    margin-right: 0.75rem;
+                    background-color: $notepad-article-border-light;
+                    @media (prefers-color-scheme: dark) {
+                        background-color: $notepad-article-border-dark;
+                    }
+                }
+            }
+            * {
+                margin: 0.25rem 0;
+            }
+            .canvas {
+                padding: 1rem 0;
+                h1 {
+                    font-size: 4rem;
+                }
+                a {
+                    color: inherit;
+                    font-weight: bold;
+                    text-decoration: underline;
+                }
+                code {
+                    font-weight: bold;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+    #notepadList {
+        margin: 2rem 1.5rem;
+        text-align: center;
+        h1 {
+            font-size: 3.25rem;
+        }
+        span {
+            font-size: 1.5rem;
+        }
+        #notepadListSelector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            @media (max-width: 640px) {
+                justify-content: center;
+            }
+            a {
+                text-decoration: none;
+                margin: 1rem;
+                padding: 2rem;
+                color: $notepad-text-color-light;
+                @media (prefers-color-scheme: dark) {
+                    color: $notepad-text-color-dark;
+                }
+                background-color: rgba($color: $notepad-article-content-background, $alpha: 0.2);
+                text-align: left;
+                border: dashed 0.5rem;
+                border-radius: 0.5rem;
+                border-color: $notepad-article-border-light;
+                @media (prefers-color-scheme: dark) {
+                    border-color: $notepad-article-border-dark;
+                }
+                will-change: transform;
+                transition: transform 250ms ease-in-out;
+                &:hover {
+                    border-width: 0.55rem;
+                    transform: scale(105%);
+                }
+                h3 {
+                    @include glassEffect(22px, 100%);
+                    margin: 0.5rem;
+                    font-size: 2.35rem;
+                    font-family: "Zen Dots";
+                    letter-spacing: -0.15rem;
+                    @media (max-width: 640px) {
+                        margin: 0.5rem;
+                        font-size: 2.25rem;
+                    }
+                }
+                p {
+                    @include glassEffect(22px, 100%);
+                    margin: 0.5rem;
+                    font-size: 1.1rem;
+                    @media (max-width: 640px) {
+                        margin: 0.5rem;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
     }
 }
 
-#head {
+#about-me {
+    min-height: 100vh;
+    color: $about-me-text-color;
+    background-color: $about-me-background-color;
+    h1 {
+        margin: 1rem;
+        text-shadow: 0.3rem 0.3rem $about-me-text-shadow, 0 0 4px black, 0 0 4.5px wheat;
+    }
+    h2,
+    h3,
+    p {
+        color: $about-me-text-color;
+    }
+    a {
+        color: $about-me-link-color;
+    }
+}
+
+h1 {
+    position: relative;
+    font-size: 5.75rem;
+    font-family: "Zen Dots";
+    letter-spacing: -0.25rem;
+    @media (max-width: 640px) {
+        font-size: 3.25rem;
+    }
+}
+
+a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-skip: none;
+    &:hover {
+        text-decoration-thickness: 0.4rem;
+    }
+}
+
+#intro {
     @include wholeViewport();
     display: flex;
     justify-content: left;
     align-items: end;
     box-sizing: border-box;
-    #headBackground {
+    #introBackground {
         position: absolute;
-        z-index: -1;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-image: url("../assets/images/portrait.png?as=avif&quality=25"),
-            url("../assets/images/portrait.png?as=webp&quality=25");
+        background-image: url("../assets/images/portrait.png?as=webp&quality=25");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50% 50%;
     }
-    #introText {
+    #introTitle {
         margin: 4rem;
-        color: $head-text-color;
-        text-shadow: 0.35rem 0.35rem $head-text-color-shadow, 0 0 4px black;
+        color: $about-me-text-color;
+        text-shadow: 0.35rem 0.35rem $about-me-text-shadow, 0 0 4px black;
         font-family: "Zen Dots";
         letter-spacing: -0.25rem;
         @media (max-width: 640px) {
@@ -268,7 +422,8 @@ header {
 }
 
 #summary {
-    @extend %section;
+    @extend %content;
+    @extend %appearingContent;
     @include glassEffect(128px, 125%);
     background-color: rgba($color: $summary-background, $alpha: 0.25);
     text-align: center;
@@ -279,7 +434,7 @@ header {
         justify-content: center;
         text-align: left;
         @media (max-width: 640px) {
-            margin: 0rem;
+            margin: 0;
         }
         h3 {
             @include glassEffect(42px, 100%);
@@ -290,7 +445,7 @@ header {
             max-height: min-content;
             font-size: 2.5rem;
             letter-spacing: -0.05rem;
-            text-shadow: 0 0 1.5px $text-shadow;
+            text-shadow: 0 0 1.5px $about-me-text-shadow;
             border-left: solid 0.5rem $summary-content-border;
             border-bottom: solid 0.5rem $summary-content-border;
             border-top-right-radius: 0.5rem;
@@ -311,7 +466,8 @@ header {
 }
 
 #contact {
-    @extend %section;
+    @extend %content;
+    @extend %appearingContent;
     @include glassEffect(128px, 125%);
     background: linear-gradient(70deg, $contact-background-gradient-1, $contact-background-gradient-2);
     text-align: center;
@@ -332,7 +488,7 @@ header {
             padding: 2.5rem;
             font-family: "Press Start 2P";
             letter-spacing: -0.2rem;
-            text-shadow: 0 0 1.5px $text-shadow;
+            text-shadow: 0 0 1.5px $about-me-text-shadow;
             background-color: $contact-content-background;
             text-align: left;
             border: dashed 0.5rem $contact-content-border;
@@ -346,8 +502,8 @@ header {
             h3 {
                 @include glassEffect(22px, 100%);
                 margin: 2rem;
-                color: $text-color;
-                text-shadow: 0.25rem 0.25rem $text-shadow, 0 0 4px black;
+                color: $about-me-text-color;
+                text-shadow: 0.25rem 0.25rem $about-me-text-shadow, 0 0 4px black;
                 font-size: 2.5rem;
                 font-family: "Press Start 2P";
                 @media (max-width: 640px) {
@@ -370,24 +526,29 @@ header {
 }
 
 footer {
-    @extend %section;
+    @extend %content;
     @include glassEffect(128px, 125%);
     position: relative;
     min-height: unset;
     max-height: min-content;
     padding: 4rem;
+    color: $footer-text-color;
     text-align: center;
     align-items: center;
     box-sizing: border-box;
     border-top: 0.35rem solid $footer-border;
-    background: radial-gradient(transparent 0%, rgba($color: $footer-background-overlay, $alpha: 0.5) 100%),
+    background: radial-gradient(transparent 0%, rgba($color: $footer-background-overlay, $alpha: 0.25) 100%),
         linear-gradient(70deg, $footer-background-gradient-1, $footer-background-gradient-2);
     h1 {
         margin: 0.25rem;
         font-size: 4rem;
         font-family: "Zen Dots";
-        text-shadow: 0.3rem 0.3rem $text-shadow, 0 0 4px black, 0 0 6px wheat;
+        text-shadow: 0.3rem 0.3rem $footer-text-shadow-color, 0 0 4px black, 0 0 6px wheat;
         letter-spacing: -0.25rem;
+    }
+    a {
+        color: $footer-link-color;
+        opacity: 0.75;
     }
     #footerNotice {
         opacity: 0.75;

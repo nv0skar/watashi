@@ -47,7 +47,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <body>
 
     <!-- Adding the loader -->
-    <loader></loader>
+    <page-loader></page-loader>
 
     <!-- Adding the no script alert -->
     <noscript>
@@ -62,7 +62,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             </text>
         </div>
         <style>
-            loader {
+            page-loader {
+                display: none !important;
+            }
+
+            #notepad {
                 display: none !important;
             }
 
@@ -86,72 +90,87 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 0SCAR
             </h1>
             <div id="links">
-                <a onclick="alert('🏗 Under construction 🏗')">
-                    → notepad ✍️
-                </a>
+                <a id="modeSelector"></a>
             </div>
         </div>
     </header>
 
-    <!-- Adding the head section -->
-    <main id="head">
-        <div id="headBackground"></div>
-        <div id="headTitleContainer">
-            <h1 id="introText">
-                <noscript>
-                    I am a science & tech entusiast living in Seville 🇪🇸
-                    <br>
-                    I ❤️ everything where power is involved ⚡️
-                </noscript>
+    <!-- Adding the notepad -->
+    <div id="notepad">
+        <div id="notepadNote">
+            <div class="info" id="notepadNoteAbout"></div>
+            <article id="notepadNoteCanvas"></article>
+            <div class="info" id="notepadNoteFooter"></div>
+        </div>
+        <div id="notepadList">
+            <h1 id="notepadListTitle"></h1>
+            <span id="notepadListSubtitle"></span>
+            <div id="notepadListSelector"></div>
+        </div>
+    </div>
+
+    <!-- Adding the about me -->
+    <div id="about-me">
+        <!-- Adding the main section -->
+        <intro id="intro">
+            <div id="introBackground"></div>
+            <div id="introTitleContainer">
+                <h1 id="introTitle">
+                    <noscript>
+                        I am a science & tech entusiast living in Seville 🇪🇸
+                        <br>
+                        I ❤️ everything where power is involved ⚡️
+                    </noscript>
+                </h1>
+            </div>
+        </intro>
+
+        <!-- Adding the summary section -->
+        <section id="summary">
+            <h1>IN/0UTPUT</h1>
+            <div>
+                <h3>Talking English and Español 🙊</h3>
+                <h3>I'm a penguin 🐧</h3>
+                <h3>I'm also a Rustacean 🦀</h3>
+                <h3>I consider myself a Pythonista 🐍</h3>
+                <h3>I've mixed feelings about Swift 🦜</h3>
+                <h3>I use TypeScript for doin' stuff 💪</h3>
+                <h3>If I had to write a compiler, I would write it in C++? 🥵</h3>
+                <h3>I like to listen pleasant sound waves 🔊</h3>
+                <h3>I love everything ⚡️</h3>
+            </div>
+        </section>
+
+        <!-- Adding the contact section -->
+        <section id="contact">
+            <h1>
+                Let's talk!
             </h1>
-        </div>
-    </main>
-
-    <!-- Adding the summary section -->
-    <section id="summary">
-        <h1>IN/0UTPUT</h1>
-        <div>
-            <h3>Talking English and Español 🙊</h3>
-            <h3>I'm a penguin 🐧</h3>
-            <h3>I'm also a Rustacean 🦀</h3>
-            <h3>I consider myself a Pythonista 🐍</h3>
-            <h3>I've mixed feelings about Swift 🦜</h3>
-            <h3>I use TypeScript for doin' stuff 💪</h3>
-            <h3>If I had to write a compiler, I would write it in C++? 🥵</h3>
-            <h3>I like to listen pleasant sound waves 🔊</h3>
-            <h3>I love everything ⚡️</h3>
-        </div>
-    </section>
-
-    <!-- Adding the contact section -->
-    <section id="contact">
-        <h1>
-            Let's talk!
-        </h1>
-        <h2 id="contactSubtitle">
-            <noscript>
-                Pls, don't send shit to my inbox 🫵
-            </noscript>
-        </h2>
-        <div>
-            <a href="mailto:nv0skar@tutanota.de">
-                <h3>Mail</h3>
-                <p>nv0skar@tutanota.de</p>
-            </a>
-            <a href="https://twitter.com/nv0skar">
-                <h3>Twitter</h3>
-                <p>@nv0skar</p>
-            </a>
-            <a href="https://github.com/nv0skar">
-                <h3>Github</h3>
-                <p>@nv0skar</p>
-            </a>
-            <a href="https://instagram.com/nv0skar">
-                <h3>Instagram</h3>
-                <p>@nv0skar</p>
-            </a>
-        </div>
-    </section>
+            <h2 id="contactSubtitle">
+                <noscript>
+                    Pls, don't send shit to my inbox 🫵
+                </noscript>
+            </h2>
+            <div>
+                <a href="mailto:nv0skar@tutanota.de">
+                    <h3>Mail</h3>
+                    <p>nv0skar@tutanota.de</p>
+                </a>
+                <a href="https://twitter.com/nv0skar">
+                    <h3>Twitter</h3>
+                    <p>@nv0skar</p>
+                </a>
+                <a href="https://github.com/nv0skar">
+                    <h3>Github</h3>
+                    <p>@nv0skar</p>
+                </a>
+                <a href="https://instagram.com/nv0skar">
+                    <h3>Instagram</h3>
+                    <p>@nv0skar</p>
+                </a>
+            </div>
+        </section>
+    </div>
 
     <!-- Adding the outro -->
     <footer>

@@ -14,6 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+export const username = "nv0skar"
+
+export const notePrefix = "!note"
+
 export const status = [
     "<strike>You can checkout my notepad (aka. my blog) by clicking on the link in the top right!</strike> Is under constuction! 🏗",
     "You can get my portfolio's source in my Github... you can also give it a star! ⭐️",
