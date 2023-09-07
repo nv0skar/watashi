@@ -14,26 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-export const username = "nv0skar"
+export const USERNAME = "nv0skar"
 
-export const notePrefix = "!note"
+export const NOTE_PREFIX = "!note"
 
-export const status = [
-    "<strike>You can checkout my notepad (aka. my blog) by clicking on the link in the top right!</strike> Is under constuction! 🏗",
+export const STATUS = [
+    "You can checkout my blog (aka. my blog) by clicking on the link in the top right! ✍️",
     "You can get my portfolio's source in my Github... you can also give it a star! ⭐️",
-    "<strike>The raw contents of my notepad is hosted on Github!</strike> Not yet! 🐱"
+    "The raw contents of my blog is hosted on Github! ⛓️"
 ];
 
-export const iAm = [
-    "Hi 👋",
-    "I'm a " + ((new Date()).getUTCFullYear() - 2006) + " years-old science & technology enthusiast 🧪",
-    "I live in Seville 🇪🇸",
-    "I ❤️ everything where power is involved ⚡️"
+export const RIBBON = [
+    ((new Date()).getUTCFullYear() - 2006) + " years-old male science & technology enthusiast 🧪",
+    "Living in Seville 🇪🇸",
 ];
 
-export const quotes = [
+export const QUOTES = [
     "If you don't fancy the meta's business, don't click on ig 🚨",
-    "Yeah, that's not google's mail 🥵",
+    "Yeah, that's <strike>not</strike> google's mail 🥵",
     "Don't spam my inbox pls 🫵",
-    "Yes, I still use Twitter 🔥"
+    "𝕏 what? 🧐"
 ];

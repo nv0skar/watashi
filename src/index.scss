@@ -14,44 +14,53 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-$header-status-text-color: #cdbeee;
-$header-status-border-color: #392356;
-$header-status-background-color: #593786;
-$header-title-color: #cdbeee;
-$header-title-shadow-color: #3c1f7a;
-$header-links-color: #cdbeee;
-$header-links-color-shadow: #42248a;
-$header-links-background-color: #2e1c51;
+$header-status-text: white;
+$header-status-border-color: #240c59;
+$header-status-background: #000047;
 
-$about-me-text-color: #cdbeee;
-$about-me-text-shadow: #3c1f7a;
-$about-me-link-color: #1ea888;
-$about-me-background-color: #211245;
+$header-title: white;
+$header-title-shadow: #240c59;
+$header-links: white;
+$header-links-shadow: #240c59;
+$header-links-background: #1d1b63;
 
-$notepad-article-border: #bcd2ee;
-$notepad-article-border-light: #0b1b2d;
-$notepad-article-border-dark: #ebbe8e;
-$notepad-article-content-background: #987959;
-$notepad-text-color-light: #0b1b2d;
-$notepad-text-color-dark: #ebbe8e;
-$notepad-background-light: #ebbc8c;
-$notepad-background-dark: black;
+$blog-article-border-light: #0b1b2d;
+$blog-article-border-dark: #bcd2ee;
+$blog-article-content-background: rgba(
+    $color: black,
+    $alpha: 0
+);
+$blog-text-light: #0b1b2d;
+$blog-text-dark: white;
+$blog-background-light: white;
+$blog-background-dark: black;
+
+$about-me-text: white;
+$about-me-text-shadow: #240c59;
+$about-me-link: #1ea888;
+$about-me-background-gradient-1: #1100ff;
+$about-me-background-gradient-2: #237e3a;
+
+$ribbon-text: white;
+$ribbon-text-shadow: #240c59;
+$ribbon-background: #0026ff;
+
 $summary-content-background: #091b25;
-$summary-content-border: #aa2b7e;
-$summary-background: #42248a;
+$summary-content-border: #5654ff;
+$summary-background: #345050;
 
-$contact-content-border: #aa2b7e;
-$contact-content-background: #2e1c51;
-$contact-background-gradient-1: #281f5a;
-$contact-background-gradient-2: #402773;
+$contact-content-border: #5c77ff;
+$contact-content-background: #000080;
+$contact-background-gradient-1: #191c7e;
+$contact-background-gradient-2: #17043f;
 
 $footer-border: #bcd2ee;
-$footer-text-color: #cdbeee;
-$footer-text-shadow-color: #3c1f7a;
-$footer-link-color: #74ffff;
-$footer-background-overlay: #87377e;
-$footer-background-gradient-1: #4f359b;
-$footer-background-gradient-2: #7d6f86;
+$footer-text: white;
+$footer-text-shadow: #240c59;
+$footer-link: #6fff87;
+$footer-background-overlay: #000000;
+$footer-background-gradient-1: #0400fa;
+$footer-background-gradient-2: #29a378;
 
 * {
     font-family: "Fira Sans";
@@ -157,14 +166,16 @@ header {
         box-sizing: border-box;
         height: 2.5rem;
         padding: 1rem;
-        color: $header-status-text-color;
-        text-shadow: 0.1rem 0.1rem $about-me-text-shadow, 0 0 2px black;
+        color: $header-status-text;
+        text-shadow:
+            0.1rem 0.1rem $about-me-text-shadow,
+            0 0 2px black;
         font-weight: bold;
         font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 0.05rem;
         border-bottom: dashed 0.05rem $header-status-border-color;
-        background-color: rgba($color: $header-status-background-color, $alpha: 0.75);
+        background-color: rgba($color: $header-status-background, $alpha: 0.75);
         pre {
             animation: scrollText 60s infinite linear;
             @keyframes scrollText {
@@ -184,12 +195,15 @@ header {
             margin: 1rem;
             max-width: min-content;
             max-height: min-content;
-            color: $header-title-color;
-            text-shadow: 0.3rem 0.3rem $header-title-shadow-color, 0 0 4px black, 0 0 4.5px wheat;
+            color: $header-title;
+            text-shadow:
+                0.3rem 0.3rem $header-title-shadow,
+                0 0 4px black,
+                0 0 4.5px wheat;
             font-size: 2rem;
             font-family: "Zen Dots";
             text-align: left;
-            letter-spacing: -0.25rem;
+            letter-spacing: -0.05rem;
         }
         #links {
             width: 100%;
@@ -198,13 +212,15 @@ header {
             font-size: 1.1rem;
             a {
                 text-decoration: none;
-                color: $header-links-color;
-                text-shadow: 0.1rem 0.1rem $header-links-color-shadow, 0 0 4px black;
+                color: $header-links;
+                text-shadow:
+                    0.1rem 0.1rem $header-links-shadow,
+                    0 0 4px black;
                 font-weight: bold;
                 will-change: background-color;
                 transition: background-color 250ms linear;
                 &:hover {
-                    background-color: rgba($color: $header-links-background-color, $alpha: 0.1);
+                    background-color: rgba($color: $header-links-background, $alpha: 0.1);
                 }
             }
         }
@@ -219,27 +235,27 @@ header {
     display: flex !important;
 }
 
-#notepad {
+#blog {
     @extend %content;
     min-height: 100vh;
     text-align: left;
-    color: $notepad-text-color-light;
-    background-color: $notepad-background-light;
+    color: $blog-text-light;
+    background-color: $blog-background-light;
     @media (prefers-color-scheme: dark) {
-        color: $notepad-text-color-dark;
-        background-color: $notepad-background-dark;
+        color: $blog-text-dark;
+        background-color: $blog-background-dark;
     }
     h1 {
         margin-left: 0;
         margin-right: 0;
     }
-    #notepadNote {
-        margin: 2rem 1.5rem;
-        padding-bottom: 2rem;
+    #blogNote {
+        margin: 3rem 1.5rem;
+        padding-bottom: 3rem;
         border-bottom: 0.2rem solid;
-        border-bottom-color: $notepad-article-border-light;
+        border-bottom-color: $blog-article-border-light;
         @media (prefers-color-scheme: dark) {
-            border-bottom-color: $notepad-article-border-dark;
+            border-bottom-color: $blog-article-border-dark;
         }
         .info {
             opacity: 0.85;
@@ -261,17 +277,16 @@ header {
                     flex: 1;
                     height: 0.15rem;
                     margin-right: 0.75rem;
-                    background-color: $notepad-article-border-light;
+                    background-color: $blog-article-border-light;
                     @media (prefers-color-scheme: dark) {
-                        background-color: $notepad-article-border-dark;
+                        background-color: $blog-article-border-dark;
                     }
                 }
             }
             * {
-                margin: 0.25rem 0;
+                margin: 2rem 0;
             }
             .canvas {
-                padding: 1rem 0;
                 h1 {
                     font-size: 4rem;
                 }
@@ -287,7 +302,7 @@ header {
             }
         }
     }
-    #notepadList {
+    #blogList {
         margin: 2rem 1.5rem;
         text-align: center;
         h1 {
@@ -296,7 +311,7 @@ header {
         span {
             font-size: 1.5rem;
         }
-        #notepadListSelector {
+        #blogListSelector {
             display: flex;
             flex-wrap: wrap;
             justify-content: left;
@@ -307,17 +322,17 @@ header {
                 text-decoration: none;
                 margin: 1rem;
                 padding: 2rem;
-                color: $notepad-text-color-light;
+                color: $blog-text-light;
                 @media (prefers-color-scheme: dark) {
-                    color: $notepad-text-color-dark;
+                    color: $blog-text-dark;
                 }
-                background-color: rgba($color: $notepad-article-content-background, $alpha: 0.2);
+                background-color: rgba($color: $blog-article-content-background, $alpha: 0.2);
                 text-align: left;
                 border: dashed 0.5rem;
                 border-radius: 0.5rem;
-                border-color: $notepad-article-border-light;
+                border-color: $blog-article-border-light;
                 @media (prefers-color-scheme: dark) {
-                    border-color: $notepad-article-border-dark;
+                    border-color: $blog-article-border-dark;
                 }
                 will-change: transform;
                 transition: transform 250ms ease-in-out;
@@ -352,29 +367,32 @@ header {
 
 #about-me {
     min-height: 100vh;
-    color: $about-me-text-color;
-    background-color: $about-me-background-color;
+    color: $about-me-text;
+    background: linear-gradient(70deg, $about-me-background-gradient-1, $about-me-background-gradient-2);
     h1 {
         margin: 1rem;
-        text-shadow: 0.3rem 0.3rem $about-me-text-shadow, 0 0 4px black, 0 0 4.5px wheat;
+        text-shadow:
+            0.3rem 0.3rem $about-me-text-shadow,
+            0 0 4px black,
+            0 0 4.5px wheat;
     }
     h2,
     h3,
     p {
-        color: $about-me-text-color;
+        color: $about-me-text;
     }
     a {
-        color: $about-me-link-color;
+        color: $about-me-link;
     }
 }
 
 h1 {
     position: relative;
-    font-size: 5.75rem;
+    font-size: 4.5rem;
     font-family: "Zen Dots";
     letter-spacing: -0.25rem;
     @media (max-width: 640px) {
-        font-size: 3.25rem;
+        font-size: 3rem;
     }
 }
 
@@ -401,22 +419,49 @@ a {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-image: url("../assets/images/portrait.png?as=webp&quality=25");
+        background-image: url("../assets/images/portrait.jpg?as=webp&quality=25");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50% 50%;
     }
     #introTitle {
         margin: 4rem;
-        color: $about-me-text-color;
-        text-shadow: 0.35rem 0.35rem $about-me-text-shadow, 0 0 4px black;
+        color: $about-me-text;
+        text-shadow:
+            0.3rem 0.3rem $about-me-text-shadow,
+            0 0 4px black;
+        font-size: 3rem;
         font-family: "Zen Dots";
-        letter-spacing: -0.25rem;
+        letter-spacing: 0;
         @media (max-width: 640px) {
             margin: 2rem;
         }
         @media (max-height: 640px) {
-            font-size: 3.35rem;
+            font-size: 3rem;
+        }
+    }
+}
+
+#ribbon {
+    @extend %content;
+    @extend %appearingContent;
+    @include glassEffect(32px, 50%);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba($color: $ribbon-background, $alpha: 0.25);
+    h2 {
+        margin: 0 2rem 0 2rem;
+        color: $ribbon-text;
+        text-shadow:
+            0.3rem 0.3rem $ribbon-text-shadow,
+            0 0 4px black;
+        font-family: "Zen Dots";
+        font-size: 2rem;
+        @media (max-width: 640px) {
+            margin: 0 1rem 0 1rem;
+        }
+        @media (max-height: 640px) {
+            font-size: 1rem;
         }
     }
 }
@@ -424,7 +469,7 @@ a {
 #summary {
     @extend %content;
     @extend %appearingContent;
-    @include glassEffect(128px, 125%);
+    @include glassEffect(64px, 100%);
     background-color: rgba($color: $summary-background, $alpha: 0.25);
     text-align: center;
     div {
@@ -443,22 +488,25 @@ a {
             padding: 2.5rem;
             min-width: 10rem;
             max-height: min-content;
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             letter-spacing: -0.05rem;
             text-shadow: 0 0 1.5px $about-me-text-shadow;
-            border-left: solid 0.5rem $summary-content-border;
-            border-bottom: solid 0.5rem $summary-content-border;
+            border-left: solid 0.35rem $summary-content-border;
+            border-bottom: solid 0.35rem $summary-content-border;
+            border-radius: 0.25rem;
             border-top-right-radius: 0.5rem;
             will-change: border-left-width, border-bottom-width, transform;
-            transition: border-left-width 250ms ease-in-out, border-bottom-width 250ms ease-in-out,
+            transition:
+                border-left-width 250ms ease-in-out,
+                border-bottom-width 250ms ease-in-out,
                 transform 250ms ease-in-out;
             @media (max-width: 640px) {
                 background-color: transparent;
                 max-height: fit-content;
             }
             &:hover {
-                border-left-width: 0.55rem;
-                border-bottom-width: 0.55rem;
+                border-left-width: 0.5rem;
+                border-bottom-width: 0.5rem;
                 transform: scale(105%);
             }
         }
@@ -468,7 +516,7 @@ a {
 #contact {
     @extend %content;
     @extend %appearingContent;
-    @include glassEffect(128px, 125%);
+    @include glassEffect(64px, 100%);
     background: linear-gradient(70deg, $contact-background-gradient-1, $contact-background-gradient-2);
     text-align: center;
     h1 {
@@ -502,9 +550,11 @@ a {
             h3 {
                 @include glassEffect(22px, 100%);
                 margin: 2rem;
-                color: $about-me-text-color;
-                text-shadow: 0.25rem 0.25rem $about-me-text-shadow, 0 0 4px black;
-                font-size: 2.5rem;
+                color: $about-me-text;
+                text-shadow:
+                    0.25rem 0.25rem $about-me-text-shadow,
+                    0 0 4px black;
+                font-size: 2rem;
                 font-family: "Press Start 2P";
                 @media (max-width: 640px) {
                     margin: 0.75rem;
@@ -514,7 +564,7 @@ a {
             p {
                 @include glassEffect(22px, 100%);
                 margin: 2rem;
-                font-size: 1.5rem;
+                font-size: 1.25rem;
                 font-family: "Press Start 2P";
                 @media (max-width: 640px) {
                     margin: 0.75rem;
@@ -527,12 +577,12 @@ a {
 
 footer {
     @extend %content;
-    @include glassEffect(128px, 125%);
+    @include glassEffect(32px, 100%);
     position: relative;
     min-height: unset;
     max-height: min-content;
     padding: 4rem;
-    color: $footer-text-color;
+    color: $footer-text;
     text-align: center;
     align-items: center;
     box-sizing: border-box;
@@ -541,13 +591,16 @@ footer {
         linear-gradient(70deg, $footer-background-gradient-1, $footer-background-gradient-2);
     h1 {
         margin: 0.25rem;
-        font-size: 4rem;
+        font-size: 3rem;
         font-family: "Zen Dots";
-        text-shadow: 0.3rem 0.3rem $footer-text-shadow-color, 0 0 4px black, 0 0 6px wheat;
+        text-shadow:
+            0.3rem 0.3rem $footer-text-shadow,
+            0 0 4px black,
+            0 0 6px wheat;
         letter-spacing: -0.25rem;
     }
     a {
-        color: $footer-link-color;
+        color: $footer-link;
         opacity: 0.75;
     }
     #footerNotice {

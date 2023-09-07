@@ -14,22 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import * as notepad from "./notepad.js";
+import * as blog from "./blog.js";
 import page from "page";
 
 export let currentPage = () => {
     if (!document.getElementById("about-me").hidden) return "about-me"
-    else return "notepad"
+    else return "blog"
 };
 
 const changePage = {
-    notepad: () => {
-        document.getElementById("notepad").hidden = false;
+    blog: () => {
+        document.getElementById("blog").hidden = false;
+        document.getElementById("status").hidden = true;
         document.getElementById("about-me").hidden = true;
     },
     aboutMe: () => {
+        document.getElementById("status").hidden = false;
         document.getElementById("about-me").hidden = false;
-        document.getElementById("notepad").hidden = true;
+        document.getElementById("blog").hidden = true;
     }
 }
 
@@ -39,29 +41,29 @@ function changeSelector(text, href) {
     selector.setAttribute('href', href);
 }
 
-page('/notepad', () => {
-    changePage.notepad();
-    document.getElementById("notepadNote").hidden = true;
+page('/blog', () => {
+    changePage.blog();
+    document.getElementById("blogNote").hidden = true;
     changeSelector("about me 👋", "/")
-    document.getElementById("notepadListTitle").innerHTML = "Notepad";
-    notepad.clearNote(document.getElementById("notepadNote"))
-    notepad.fetchNotes(document.getElementById("notepadListSelector"), document.getElementById("notepadListSubtitle"));
+    document.getElementById("blogListTitle").innerHTML = "Blog";
+    blog.clearNote(document.getElementById("blogNote"))
+    blog.fetchNotes(document.getElementById("blogListSelector"), document.getElementById("blogListSubtitle"));
 });
 
-page('/notepad/:id', (ctx) => {
-    changePage.notepad();
-    document.getElementById("notepadNote").hidden = false;
-    changeSelector("notepad's index 🗒️", "/notepad")
-    document.getElementById("notepadListTitle").innerHTML = "Other notes";
-    notepad.loadNote(ctx.params.id, document.getElementById("notepadNote"))
-    notepad.fetchNotes(document.getElementById("notepadListSelector"), document.getElementById("notepadListSubtitle"));
+page('/blog/:id', (ctx) => {
+    changePage.blog();
+    document.getElementById("blogNote").hidden = false;
+    changeSelector("blog's index 🗒️", "/blog")
+    document.getElementById("blogListTitle").innerHTML = "Other notes";
+    blog.loadNote(ctx.params.id, document.getElementById("blogNote"))
+    blog.fetchNotes(document.getElementById("blogListSelector"), document.getElementById("blogListSubtitle"));
     window.scrollTo(0, 0);
 });
 
 page('*', () => {
     changePage.aboutMe();
-    changeSelector("notepad ✍️", "/notepad")
-    notepad.clearNote(document.getElementById("notepadNote"))
+    changeSelector("blog ✍️", "/blog")
+    blog.clearNote(document.getElementById("blogNote"))
 });
 
 page()

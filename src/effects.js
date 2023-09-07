@@ -62,8 +62,10 @@ export function headerBehaviour(element, disableBackgroundRemoval, status) {
             }
         }
         if (!element.hidden) {
-            if (window.scrollY >= transparentHeight || currentPage() == disableBackgroundRemoval) {
-                status.classList.add("statusShow");
+            if (window.scrollY >= transparentHeight) {
+                if (currentPage() != disableBackgroundRemoval) {
+                    status.classList.add("statusShow");
+                }
                 element.classList.add("headerBackground")
             } else {
                 status.classList.remove("statusShow");
@@ -82,7 +84,7 @@ export function statusSet(element) {
         const spaces = " ".repeat(size);
         return spaces + char + spaces
     }
-    config.status.forEach((state) => {
+    config.STATUS.forEach((state) => {
         completeText = completeText.concat(completeText != "" ? encapsulateSpaces("●", 5) : "").concat(state);
     })
     element.innerHTML = completeText;
@@ -150,7 +152,7 @@ export function dynamicContent() {
     }
 }
 
-export function whoAmI(element) {
+export function ribbon(element) {
     const splitter = (string) => {
         const splitter = new GraphemeSplitter();
         return splitter.splitGraphemes(string);
@@ -161,7 +163,7 @@ export function whoAmI(element) {
         loop: true,
         stringSplitter: splitter
     });
-    config.iAm.forEach((phrase) => {
+    config.RIBBON.forEach((phrase) => {
         effect.typeString(phrase).pauseFor(1000).deleteAll();
     })
     const onScreen = new IntersectionObserver((elements) => {
@@ -179,7 +181,7 @@ export function whoAmI(element) {
 }
 
 export function randomQuote(element) {
-    element.innerHTML = config.quotes[Math.floor(Math.random() * config.quotes.length)]
+    element.innerHTML = config.QUOTES[Math.floor(Math.random() * config.QUOTES.length)]
 }
 
 export function glitch(element, timeSpan = 0.5) {

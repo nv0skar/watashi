@@ -18,15 +18,15 @@ import "./router.js";
 import * as effect from "./effects.js";
 
 window.onload = () => {
-    document.getElementById("tracker").setAttribute("data-beampipe-domain", window.location.hostname); // Set website's hostname for tracker
-    document.getElementById("footerYear").innerHTML = ((new Date()).getUTCFullYear()); // Set current year on footer
-    effect.headerBehaviour(document.querySelector("header"), "notepad", document.getElementById("status")); // Set up header behaviour
-    effect.statusSet(document.getElementById("statusContent")); // Set text of scrolling bar
-    effect.whoAmI(document.getElementById("introTitle")) // Start typing effect for intro
-    effect.randomQuote(document.getElementById("contactSubtitle")); // Set random quote for contact's subtitle
-    effect.parallax('#introTitleContainer', -1); // Set parallax effect for title
-    effect.parallax('#introBackground', -2.5); // Set parallax effect for background
-    effect.appearingContent([document.getElementById("summary"), document.getElementById("contact")], "contentHidden"); // Appearing effect for the summary and contact sections
-    effect.dynamicContent(); // React to dynamic contents
-    effect.finishLoad(document.querySelector("page-loader"), "loaderHidden", "disableScrolling"); // Hide loader
+    document.getElementById("tracker").setAttribute("data-beampipe-domain", window.location.hostname);
+    document.getElementById("footerYear").innerHTML = ((new Date()).getUTCFullYear());
+    effect.headerBehaviour(document.querySelector("header"), "blog", document.getElementById("status"));
+    effect.statusSet(document.getElementById("statusContent"));
+    effect.ribbon(document.getElementById("ribbonTitle"));
+    effect.randomQuote(document.getElementById("contactSubtitle"));
+    effect.parallax('#introTitleContainer', -1);
+    effect.parallax('#introBackground', -5);
+    effect.appearingContent([document.getElementById("summary"), document.getElementById("contact")], "contentHidden");
+    effect.dynamicContent();
+    effect.finishLoad(document.querySelector("page-loader"), "loaderHidden", "disableScrolling");
 }
