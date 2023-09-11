@@ -1,19 +1,6 @@
-<!--
-whoami
-Copyright (C) 2022 Oscar
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+<!-- 
+    whoami
+    Copyright (C) 2023 Oscar 
 -->
 
 <!DOCTYPE html>
@@ -24,12 +11,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
     <title>Oscar A.</title>
-    <meta property=" og:title" content="Oscar A.">
+    <meta property="og:title" content="Oscar A.">
 
-    <meta name="Science & tech entusiast who calls himself an explorer 🤠">
+    <meta name="description" content="Science & tech entusiast who calls himself an explorer 🤠">
     <meta property="og:description" content="Science & tech entusiast who calls himself an explorer 🤠">
 
-    <script async defer type="module" src="index.js"></script>
+    <meta name="keywords" content="nv0skar, Oscar, Oscar A., Oscar Alvarez">
+
+    <script async defer type="module" src="app.ts"></script>
     <script async defer type="text/javascript" src="https://beampipe.io/js/tracker.js" id="tracker"
         data-beampipe-domain=""></script>
 
@@ -38,7 +27,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
         href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Fira+Sans:wght@400;700&family=Press+Start+2P&display=swap">
-    <meta name="theme-color" content="#63458A">
+    <meta name="theme-color" content="#000047">
 </head>
 
 <body>
@@ -90,7 +79,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     </header>
 
     <div id="blog">
-        <div id="blogNote">
+        <!-- <div id="blogNote">
             <div class="info" id="blogNoteAbout"></div>
             <article id="blogNoteCanvas"></article>
             <div class="info" id="blogNoteFooter"></div>
@@ -99,7 +88,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             <h1 id="blogListTitle"></h1>
             <span id="blogListSubtitle"></span>
             <div id="blogListSelector"></div>
-        </div>
+        </div> -->
     </div>
 
     <div id="about-me">
@@ -114,14 +103,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
         <section id="ribbon">
             <h2 id="ribbonTitle">
-                <noscript>
-                    Male science & tech entusiast living in Seville 🇪🇸
-                </noscript>
+                <span>$> </span>
+                <span id="ribbonWriter">
+                    <noscript>
+                        Male science & tech entusiast living in Seville 🇪🇸
+                    </noscript>
+                </span>
             </h2>
         </section>
 
         <section id="summary">
-            <h1>Summary</h1>
+            <h1>Resumé</h1>
             <div>
                 <h3>Algorithm addict 🕳️</h3>
                 <h3>Crabs! 🦀</h3>

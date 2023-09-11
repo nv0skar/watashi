@@ -1,18 +1,5 @@
 // whoami
-// Copyright (C) 2022 Oscar
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// Copyright (C) 2023 Oscar
 
 $header-status-text: white;
 $header-status-border-color: #240c59;
@@ -43,11 +30,11 @@ $about-me-background-gradient-2: #237e3a;
 
 $ribbon-text: white;
 $ribbon-text-shadow: #240c59;
-$ribbon-background: #0026ff;
+$ribbon-background: #000000;
 
 $summary-content-background: #091b25;
 $summary-content-border: #5654ff;
-$summary-background: #345050;
+$summary-background: #000000;
 
 $contact-content-border: #5c77ff;
 $contact-content-background: #000080;
@@ -161,6 +148,7 @@ header {
     will-change: backdrop-filter;
     transition: backdrop-filter 500ms ease-in-out;
     #status {
+        @include glassEffect(52px, 125%);
         display: none;
         align-items: center;
         box-sizing: border-box;
@@ -175,7 +163,7 @@ header {
         text-transform: uppercase;
         letter-spacing: 0.05rem;
         border-bottom: dashed 0.05rem $header-status-border-color;
-        background-color: rgba($color: $header-status-background, $alpha: 0.75);
+        background-color: rgba($color: $header-status-background, $alpha: 0.5);
         pre {
             animation: scrollText 60s infinite linear;
             @keyframes scrollText {
@@ -228,7 +216,7 @@ header {
 }
 
 .headerBackground {
-    @include glassEffect(52px, 125%);
+    @include glassEffect(52px, 100%);
 }
 
 .statusShow {
@@ -249,7 +237,7 @@ header {
         margin-left: 0;
         margin-right: 0;
     }
-    #blogNote {
+    .article {
         margin: 3rem 1.5rem;
         padding-bottom: 3rem;
         border-bottom: 0.2rem solid;
@@ -283,12 +271,12 @@ header {
                     }
                 }
             }
-            * {
-                margin: 2rem 0;
-            }
+
             .canvas {
+                margin: 1rem 0;
+                text-justify: auto;
                 h1 {
-                    font-size: 4rem;
+                    font-size: 2.5rem;
                 }
                 a {
                     color: inherit;
@@ -297,12 +285,13 @@ header {
                 }
                 code {
                     font-weight: bold;
-                    font-style: italic;
+                    font-family: monospace;
+                    background-color: rgba($color: green, $alpha: 0.25);
                 }
             }
         }
     }
-    #blogList {
+    .list {
         margin: 2rem 1.5rem;
         text-align: center;
         h1 {
@@ -311,7 +300,7 @@ header {
         span {
             font-size: 1.5rem;
         }
-        #blogListSelector {
+        .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: left;
@@ -371,10 +360,16 @@ header {
     background: linear-gradient(70deg, $about-me-background-gradient-1, $about-me-background-gradient-2);
     h1 {
         margin: 1rem;
+        font-size: 4.5rem;
+        font-family: "Zen Dots";
+        letter-spacing: -0.25rem;
         text-shadow:
             0.3rem 0.3rem $about-me-text-shadow,
             0 0 4px black,
             0 0 4.5px wheat;
+        @media (max-width: 640px) {
+            font-size: 3rem;
+        }
     }
     h2,
     h3,
@@ -383,16 +378,6 @@ header {
     }
     a {
         color: $about-me-link;
-    }
-}
-
-h1 {
-    position: relative;
-    font-size: 4.5rem;
-    font-family: "Zen Dots";
-    letter-spacing: -0.25rem;
-    @media (max-width: 640px) {
-        font-size: 3rem;
     }
 }
 
@@ -445,7 +430,7 @@ a {
 #ribbon {
     @extend %content;
     @extend %appearingContent;
-    @include glassEffect(32px, 50%);
+    @include glassEffect(8px, 75%);
     padding-top: 1rem;
     padding-bottom: 1rem;
     background-color: rgba($color: $ribbon-background, $alpha: 0.25);
