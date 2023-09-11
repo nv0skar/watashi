@@ -4,6 +4,7 @@
 import * as config from "./config";
 import * as router from "./router";
 import * as app from "./app";
+import * as effects from "./effects";
 
 export function header(header: HTMLElement, always_background: router.Route, status_bar: HTMLElement) {
     let transparentHeight = window.innerHeight / 4;
@@ -18,13 +19,13 @@ export function header(header: HTMLElement, always_background: router.Route, sta
         if (Math.abs(window.scrollY - lastPosition) >= 15) {
             if (lastPosition <= window.scrollY && window.scrollY > 0) {
                 if (!header.hidden && window.scrollY >= transparentHeight) {
-                    app.glitch(header);
+                    effects.glitch(header);
                     header.hidden = true
                 }
             } else {
                 if (header.hidden) {
                     header.hidden = false
-                    app.glitch(header);
+                    effects.glitch(header);
                 }
             }
         }
