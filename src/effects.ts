@@ -1,14 +1,12 @@
 // whoami
 // Copyright (C) 2023 Oscar
 
-import * as config from "./config";
-
 import Typewriter from 'typewriter-effect/dist/core';
 import GraphemeSplitter from "grapheme-splitter";
 import Rellax from "rellax";
 import { PowerGlitch } from "powerglitch";
 
-export function section_fade(elements: HTMLElement[], animation: string) {
+export function section_fade<T extends Element>(elements: T[], animation: string) {
     const onScreen = new IntersectionObserver((elements) => {
         elements.forEach((element) => {
             if (element.isIntersecting) {
@@ -25,7 +23,7 @@ export function section_fade(elements: HTMLElement[], animation: string) {
 }
 
 
-export function writing(element: HTMLElement) {
+export function writing<T extends Element>(element: T, phrases: string[]) {
     const splitter = (string) => {
         const splitter = new GraphemeSplitter();
         return splitter.splitGraphemes(string);
@@ -36,7 +34,7 @@ export function writing(element: HTMLElement) {
         loop: true,
         stringSplitter: splitter
     });
-    config.RIBBON.forEach((phrase) => {
+    phrases.forEach((phrase) => {
         effect.typeString(phrase).pauseFor(1000).deleteAll();
     })
     const onScreen = new IntersectionObserver((elements) => {
@@ -53,7 +51,7 @@ export function writing(element: HTMLElement) {
     onScreen.observe(element);
 }
 
-export function random_quote(target: HTMLElement, quotes: string[]) {
+export function random_quote<T extends Element>(target: T, quotes: string[]) {
     target.innerHTML = quotes[Math.floor(Math.random() * quotes.length)]
 }
 
@@ -86,7 +84,7 @@ export function glitch(element: HTMLElement, timeSpan = 0.5) {
         });
 }
 
-export function parallax(element: HTMLElement, speed: number) {
+export function parallax<T extends Element>(element: T, speed: number) {
     Rellax(element, {
         speed: speed,
         center: true,

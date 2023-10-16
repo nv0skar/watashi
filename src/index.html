@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
-        href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Fira+Sans:wght@400;700&family=Press+Start+2P&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Noto+Serif:wght@400;700&display=swap">
     <meta name="theme-color" content="#000047">
 </head>
 
@@ -36,14 +36,7 @@
 
     <noscript>
         <div id="noscript">
-            <text>You can totally do without scripts! But I use scripts for rendering my blog and to
-                make fancy effects
-                as
-                well! The experience just won't be the same! However if you don't really want to enable scripts,
-                here is
-                the
-                link to the <a href="https://gist.github.com/nv0skar">raw blog</a>
-            </text>
+            <text>This website use scripts for rendering the blog.</text>
         </div>
         <style>
             page-loader {
@@ -69,7 +62,7 @@
             <pre id="statusContent"></pre>
         </div>
         <div>
-            <h1 class="change glitch" data-to="nv0skar" id="headTitle">
+            <h1 id="headTitle">
                 0SCAR
             </h1>
             <div id="links">
@@ -78,62 +71,112 @@
         </div>
     </header>
 
-    <div id="blog">
-        <!-- <div id="blogNote">
-            <div class="info" id="blogNoteAbout"></div>
-            <article id="blogNoteCanvas"></article>
-            <div class="info" id="blogNoteFooter"></div>
-        </div>
-        <div id="blogList">
-            <h1 id="blogListTitle"></h1>
-            <span id="blogListSubtitle"></span>
-            <div id="blogListSelector"></div>
-        </div> -->
-    </div>
+    <div id="blog"></div>
 
-    <div id="about-me">
+    <div id="about_me">
         <intro id="intro">
-            <div id="introBackground"></div>
-            <div id="introTitleContainer">
-                <h1 id="introTitle">
-                    Intricate about creating never seen stuff ✨
-                </h1>
-            </div>
+            <div id="intro_background"></div>
+            <h1 id="intro_title">
+                Intricate about creating never seen stuff ✨
+            </h1>
         </intro>
 
-        <section id="ribbon">
-            <h2 id="ribbonTitle">
-                <span>$> </span>
-                <span id="ribbonWriter">
-                    <noscript>
-                        Male science & tech entusiast living in Seville 🇪🇸
-                    </noscript>
-                </span>
+        <section id="first_glance">
+            <h2>
+                <u>Honor</u> & aspiration to <u>excellence</u> are my <highlight>pursuit
+                </highlight>.
             </h2>
         </section>
 
-        <section id="summary">
-            <h1>Resumé</h1>
+        <section id="roadmap">
+            <h1>Roadmap</h1>
             <div>
-                <h3>Algorithm addict 🕳️</h3>
-                <h3>Crabs! 🦀</h3>
-                <h3>Pythonic citizen 🐍</h3>
-                <h3>Creating new stuff 💭</h3>
-                <h3>Swift-architect 🦉</h3>
-                <h3>Typescript-poet 📜</h3>
-                <h3>C-ish dialects in general 🗿</h3>
-                <h3>English & Spanish 🎙️</h3>
+                <div>
+                    <h3>High Performance Computing</h3>
+                    <p>I have worked in projects where high performance computing was a tier one priority. One such
+                        example was Nearssage's networking module where I built a massively parallelized server with a
+                        custom protocol over UDP.</p>
+                </div>
+                <div>
+                    <h3>Programming</h3>
+                    <p>I have done several (open source) programming projects you can take a look yourself. I have
+                        worked
+                        with Python, Java(Type)Script, C-like, Swift, Rust and Zig.</p>
+                </div>
+                <div>
+                    <h3>Networking</h3>
+                    <p>I have designed custom protocols over UDP, you can find an example of such in Nearssage's
+                        networking module.</p>
+                </div>
+                <div>
+                    <h3>Algorithm Research</h3>
+                    <p>I have researched and worked on several algorithms to tackle some problems I stumbled upon. One
+                        of those is
+                        implemented in Haski, a stock forecaster.</p>
+                </div>
+                <div>
+                    <h3>Cryptography</h3>
+                    <p>For me cryptography is an essential in our daily lives, that's why I dedicated a tremendous
+                        effort on researching the field. This effort created Komatta, a cryptosystem with a symetric
+                        variable-length cypher made in-house, and other projects like Nearssage's addition of
+                        post-quantum primitives to the X3DH specification (before Signal released their PQXDH spec).</p>
+                </div>
+                <div>
+                    <h3>Blockchain</h3>
+                    <p>I have done Singular, an experimental blockchain (no DHT was implemented).</p>
+                </div>
+                <div>
+                    <h3>Compiler Design</h3>
+                    <p>I have made an extensive research on compiler design, as a side-effect I created Kiban, a toy
+                        programming language (only the lexer is in place, the AST parser is on the road, the code
+                        generator is non existant).</p>
+                </div>
+                <div>
+                    <h3>Creativity</h3>
+                    <p>From my humble opinion, I consider myself a creative. I have worked on designing impactful
+                        websites, video-editing, photo-editing, and other creative tasks.</p>
+                </div>
+                <div>
+                    <h3>And more</h3>
+                    <p>I cannot say I am not a talkative and an approachable person, you can get in touch with me to
+                        know further.</p>
+                </div>
             </div>
+        </section>
+
+        <section id="milestones">
+            <h1>Milestones</h1>
+            <div>
+                <ol>
+                    <li><span>Finish <u>baccalaureate</u> at Seville.</span></li>
+                    <li>
+                        <span>Apply for a combined degree in <u>mathematics & computer science</u>. In
+                            the case my application
+                            is
+                            rejected I would presumably apply for one of those.</span>
+                    </li>
+                    <li>
+                        <span>I would like to complement my degree with a further <u>postgraduate degree
+                            </u>.</span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="outro">
+            <h2>
+                My <u>fuel</u> is not what I <highlight>already know</highlight> but what <highlight>remains</highlight>
+                to be
+                discovered.
+            </h2>
         </section>
 
         <section id="contact">
             <h1>
-                Let's talk!
+                Contact me
             </h1>
-            <h2 id="contactSubtitle">
-                <noscript>
-                    Pls, don't send shit to my inbox 🫵
-                </noscript>
+            <h2 id="contact_subtitle">
+                No hassle, feel free to contact me for any questions or propositions.
             </h2>
             <div>
                 <a href="mailto:oscaralgonz@gmail.com">
@@ -141,7 +184,7 @@
                     <p>oscaralgonz@gmail.com</p>
                 </a>
                 <a href="https://twitter.com/nv0skar">
-                    <h3>Elon's 𝕏</h3>
+                    <h3>𝕏</h3>
                     <p>@nv0skar</p>
                 </a>
                 <a href="https://github.com/nv0skar">
@@ -161,9 +204,9 @@
     </div>
 
     <footer>
-        <h1>0SCAR</h1>
-        <p>Liked this? Give it some ❤️ on <a href="https://github.com/nv0skar/whoami">Github</a>!</p>
-        <p id="footerNotice">Copyright (C) <span id="footerYear">2023</span> Oscar 🐙</p>
+        <h1>Oscar AG.</h1>
+        <p>Made by me, see it on <a href="https://github.com/nv0skar/whoami">Github</a></p>
+        <p id="footerNotice">Copyright (C) <span id="footerYear">2023</span> Oscar AG</p>
     </footer>
 
 </body>

@@ -41,7 +41,7 @@ function change_header_route(text: string, route: string) {
 
 page('/blog', () => {
     setup_route.blog();
-    change_header_route("about me 👋", "/")
+    change_header_route("about me", "/")
     blog.fetch_articles();
 });
 
@@ -49,7 +49,7 @@ page('/blog/:id', (ctx) => {
     setup_route.blog();
     change_header_route("blog's index 🗒️", "/blog")
     blog.load_article(ctx.params.id)
-    blog.fetch_articles("Other articles...");
+    blog.fetch_articles("Other articles");
     window.scrollTo(0, 0);
 });
 

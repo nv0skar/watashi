@@ -18,7 +18,7 @@ export function fetch_articles(override_title: string | undefined = undefined) {
     const title = document.createElement("h1");
     if (override_title !== undefined)
         title.innerHTML = override_title;
-    else effects.random_quote(title, config.BLOQ_QUOTES);
+    else title.innerHTML = "Blog";
     list.appendChild(title);
     const subtitle = document.createElement("span");
     list.appendChild(subtitle);
