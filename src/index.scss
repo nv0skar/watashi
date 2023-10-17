@@ -396,7 +396,7 @@ header {
             0 0 3px wheat;
         font-family: "Noto Serif";
         @media (max-width: 640px) {
-            font-size: 3rem;
+            font-size: 3.5rem;
         }
     }
     h2,
@@ -428,7 +428,7 @@ a {
     #intro_background {
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -450,6 +450,7 @@ a {
         transform: none;
         @media (max-width: 640px) {
             margin: 2rem;
+            font-size: 2rem;
         }
         @media (max-height: 640px) {
             font-size: 3.5rem;
@@ -473,6 +474,8 @@ a {
         font-size: 4rem;
         @media (max-width: 640px) {
             margin: 0 1rem 0 1rem;
+            text-align: center;
+            font-size: 2rem;
         }
         @media (max-height: 640px) {
             font-size: 1rem;
