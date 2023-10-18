@@ -1,0 +1,300 @@
+// whoami
+// Copyright (C) 2023 Oscar
+
+@import "./consts";
+
+#about {
+    min-height: 100vh;
+    color: $about-text;
+    &::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(-70deg, $about-background-gradient-1, $about-background-gradient-2);
+    }
+    h1 {
+        @extend .scale_hover;
+        margin: 2rem;
+        font-size: 4.5rem;
+        text-shadow:
+            0.2rem 0.2rem $about-text-shadow,
+            0 0 4px black,
+            0 0 3px wheat;
+        font-family: "Noto Serif";
+        @media (max-width: 640px) {
+            font-size: 3.5rem;
+        }
+    }
+    h2,
+    h3,
+    p {
+        color: $about-text;
+    }
+    a {
+        color: $about-link;
+    }
+}
+
+a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-skip: none;
+    &:hover {
+        text-decoration-thickness: 0.4rem;
+    }
+}
+
+#intro {
+    @include maximize();
+    display: flex;
+    justify-content: left;
+    align-items: end;
+    box-sizing: border-box;
+    #intro_background {
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 8px white;
+        overflow: hidden;
+        background-image: url("../../assets/images/portrait.png?as=webp&quality=75");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 100% 50%;
+    }
+    #intro_title {
+        margin: 4rem;
+        color: rgba($color: $about-text, $alpha: 1);
+        text-align: justify;
+        text-shadow:
+            0.3rem 0.3rem $about-text-shadow,
+            0 0 4px black;
+        font-size: 3.5rem;
+        font-family: "Zen Dots";
+        transform: none;
+        @media (max-width: 640px) {
+            margin: 2rem;
+            font-size: 2rem;
+        }
+        @media (max-height: 640px) {
+            font-size: 3.5rem;
+        }
+    }
+}
+
+#first_glance {
+    @extend %content;
+    @extend %appearing;
+    @include glass(8px, 75%);
+    background-color: rgba($color: $ribbon-background, $alpha: 0.5);
+    h2 {
+        margin: 4rem;
+        color: $ribbon-text;
+        text-align: justify;
+        text-shadow:
+            0.2rem 0.2rem $ribbon-text-shadow,
+            0 0 4px black,
+            0 0 3px wheat;
+        font-size: 4rem;
+        @media (max-width: 640px) {
+            margin: 0 1rem 0 1rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        @media (max-height: 640px) {
+            font-size: 1rem;
+        }
+    }
+}
+
+#roadmap {
+    @extend %content;
+    @extend %appearing;
+    @include glass(64px, 100%);
+    background-color: rgba($color: $roadmap-background, $alpha: 0.5);
+    text-align: center;
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+        margin: 2.5rem;
+        justify-content: center;
+        text-align: left;
+        @media (max-width: 640px) {
+            margin: 0;
+        }
+        div {
+            @include glass(8px, 100%);
+            @extend .scale_hover;
+            background-color: rgba($color: black, $alpha: 0.15);
+            margin: 0.75rem;
+            padding: 2.5rem;
+            min-width: 25%;
+            box-shadow: 0.3rem 0.3rem rgba($color: $roadmap-content-border, $alpha: 0.25);
+            border-radius: 0.5rem;
+            h3 {
+                @include glass(4px, 100%);
+                align-self: center;
+                padding: 1rem;
+                height: min-content;
+                text-align: center;
+                background-color: rgba($color: black, $alpha: 0.25);
+                border-radius: 1.5rem;
+                font-size: 2.25rem;
+                text-shadow:
+                    0.1rem 0.1rem $about-text-shadow,
+                    0 0 4px black,
+                    0 0 3px wheat;
+            }
+            p {
+                width: 100%;
+                color: whitesmoke;
+                text-align: justify;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+#milestones {
+    @extend %content;
+    @extend %appearing;
+    @include glass(64px, 100%);
+    background-color: rgba($color: $roadmap-background, $alpha: 0.5);
+    text-align: center;
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        @media (max-width: 640px) {
+            margin: 0;
+        }
+        ol {
+            padding: 0;
+            list-style-position: inside;
+            li {
+                margin: 2rem;
+                font-size: 3.25rem;
+                span {
+                    color: whitesmoke;
+                    font-size: 1.65rem;
+                }
+            }
+        }
+    }
+}
+
+#outro {
+    @extend %content;
+    @extend %appearing;
+    @include glass(8px, 75%);
+    background-color: rgba($color: $ribbon-background, $alpha: 0.5);
+    h2 {
+        margin: 4rem;
+        color: $ribbon-text;
+        text-align: justify;
+        text-shadow:
+            0.2rem 0.2rem $ribbon-text-shadow,
+            0 0 4px black,
+            0 0 3px wheat;
+        font-size: 4rem;
+        @media (max-width: 640px) {
+            margin: 0 1rem 0 1rem;
+        }
+        @media (max-height: 640px) {
+            font-size: 1rem;
+        }
+    }
+}
+
+#contact {
+    @extend %content;
+    @extend %appearing;
+    @include glass(64px, 100%);
+    background-color: rgba($color: $roadmap-background, $alpha: 0.65);
+    text-align: center;
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+    h2 {
+        margin-top: 0.5rem;
+        font-size: 2.25rem;
+    }
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        a {
+            @include glass(32px, 100%);
+            @extend .scale_hover;
+            text-decoration: none;
+            margin: 1.5rem;
+            padding: 2.5rem;
+            text-shadow: 0 0 1.5px $about-text-shadow;
+            background-color: rgba($color: white, $alpha: 0.2);
+            text-align: left;
+            border: dashed 0.35rem gray;
+            border-radius: 0.5rem;
+            h3 {
+                @include glass(22px, 100%);
+                margin: 1rem;
+                color: $about-text;
+                text-shadow:
+                    0.2rem 0.2rem $about-text-shadow,
+                    0 0 4px black;
+                font-size: 2.5rem;
+                @media (max-width: 640px) {
+                    margin: 0.75rem;
+                    font-size: 2rem;
+                }
+            }
+            p {
+                @include glass(22px, 100%);
+                margin: 1rem;
+                font-size: 1.25rem;
+                font-family: "Helvetica";
+                @media (max-width: 640px) {
+                    margin: 0.75rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    @extend %content;
+    @include glass(8px, 100%);
+    position: relative;
+    min-height: unset;
+    max-height: min-content;
+    padding: 4rem;
+    color: $footer-text;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-top: 0.35rem solid $footer-border;
+    background: rgba($color: black, $alpha: 0.5);
+    h1 {
+        @extend .scale_hover;
+        margin: 0.25rem;
+        font-size: 3.5rem;
+        font-family: "Zen Dots";
+        text-shadow:
+            0.2rem 0.2rem $footer-text-shadow,
+            0 0 4px black,
+            0 0 4px wheat;
+    }
+    a {
+        color: $footer-link;
+        opacity: 0.75;
+    }
+    #footerNotice {
+        opacity: 0.75;
+        line-height: 0;
+    }
+}

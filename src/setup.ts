@@ -3,7 +3,6 @@
 
 import * as config from "./config";
 import * as router from "./router";
-import * as app from "./app";
 import * as effects from "./effects";
 
 export function header(header: HTMLElement, always_background: router.Route, status_bar: HTMLElement) {
@@ -45,6 +44,7 @@ export function header(header: HTMLElement, always_background: router.Route, sta
         lastPosition = window.scrollY;
     }, { passive: true });
 }
+
 export function status(status_bar: HTMLElement) {
     let completeText = "";
     const encapsulateSpaces = (char, size) => {

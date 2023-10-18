@@ -15,11 +15,10 @@
         "@octokit/rest": "^19.0.5",
         "@solonovamax/parcel-transformer-google-fonts": "^0.1.5",
         "dompurify": "^2.4.3",
-        "grapheme-splitter": "^1.0.4",
         "marked": "^4.2.5",
         "page": "^1.11.6",
+        "typed.js": "^2.0.16",
         "powerglitch": "^2.3.0",
-        "rellax": "^1.12.1",
-        "typewriter-effect": "^2.19.0"
+        "rellax": "^1.12.1"
     }
 }

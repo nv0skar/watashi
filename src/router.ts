@@ -13,7 +13,7 @@ export enum Route {
 }
 
 export let current_page = () => {
-    if (!app.about_me.hidden) return Route.AboutMe
+    if (!app.about.hidden) return Route.AboutMe
     else return Route.Blog
 };
 
@@ -21,12 +21,12 @@ const setup_route = {
     blog: () => {
         app.blog.hidden = false;
         app.status_bar.hidden = true;
-        app.about_me.hidden = true;
+        app.about.hidden = true;
         app.blog.textContent = "";
     },
-    about_me: () => {
+    about: () => {
         app.status_bar.hidden = false;
-        app.about_me.hidden = false;
+        app.about.hidden = false;
         app.blog.hidden = true;
         app.blog.textContent = "";
     }
@@ -54,6 +54,6 @@ page('/blog/:id', (ctx) => {
 });
 
 page('*', () => {
-    setup_route.about_me();
+    setup_route.about();
     change_header_route("blog ✍️", "/blog")
 });

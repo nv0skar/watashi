@@ -1,0 +1,133 @@
+// whoami
+// Copyright (C) 2023 Oscar
+
+@import "./consts";
+
+#blog {
+    @extend %content;
+    min-height: 100vh;
+    text-align: left;
+    color: $blog-text-light;
+    background-color: $blog-background-light;
+    @media (prefers-color-scheme: dark) {
+        color: $blog-text-dark;
+        background-color: $blog-background-dark;
+    }
+    h1 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .article {
+        margin: 3rem 1.5rem;
+        padding-bottom: 3rem;
+        border-bottom: 0.2rem solid;
+        border-bottom-color: $blog-article-border-light;
+        @media (prefers-color-scheme: dark) {
+            border-bottom-color: $blog-article-border-dark;
+        }
+        .info {
+            opacity: 0.85;
+            text-align: right;
+            * {
+                margin: 0;
+            }
+            a {
+                color: inherit;
+            }
+        }
+        article {
+            .info {
+                display: flex;
+                align-items: center;
+                margin: 0 0 2rem;
+                &::before {
+                    content: "";
+                    flex: 1;
+                    height: 0.15rem;
+                    margin-right: 0.75rem;
+                    background-color: $blog-article-border-light;
+                    @media (prefers-color-scheme: dark) {
+                        background-color: $blog-article-border-dark;
+                    }
+                }
+            }
+
+            .canvas {
+                margin: 1rem 2rem;
+                text-align: justify;
+                h1 {
+                    font-size: 2.5rem;
+                }
+                a {
+                    color: inherit;
+                    font-weight: bold;
+                    text-decoration: underline;
+                }
+                code {
+                    font-weight: bold;
+                    font-family: monospace;
+                    background-color: rgba($color: green, $alpha: 0.25);
+                }
+            }
+        }
+    }
+    .list {
+        margin: 2rem 1.5rem;
+        text-align: center;
+        h1 {
+            font-size: 3.25rem;
+        }
+        span {
+            font-size: 1.5rem;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1;
+
+            @media (max-width: 640px) {
+                justify-content: center;
+            }
+            a {
+                @extend .scale_hover;
+                text-decoration: none;
+                width: 50%;
+                margin: 1rem;
+                padding: 2rem;
+                color: $blog-text-light;
+                @media (prefers-color-scheme: dark) {
+                    color: $blog-text-dark;
+                }
+                background-color: rgba($color: $blog-article-content-background, $alpha: 0.2);
+                text-align: left;
+                border: dashed 0.5rem;
+                border-radius: 0.5rem;
+                border-color: $blog-article-border-light;
+                @media (prefers-color-scheme: dark) {
+                    border-color: $blog-article-border-dark;
+                }
+
+                h3 {
+                    @include glass(22px, 100%);
+                    margin: 0.5rem;
+                    font-size: 2.35rem;
+                    font-family: "Zen Dots";
+                    letter-spacing: -0.15rem;
+                    @media (max-width: 640px) {
+                        margin: 0.5rem;
+                        font-size: 2.25rem;
+                    }
+                }
+                p {
+                    @include glass(22px, 100%);
+                    margin: 0.5rem;
+                    font-size: 1.1rem;
+                    @media (max-width: 640px) {
+                        margin: 0.5rem;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

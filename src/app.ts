@@ -2,7 +2,6 @@
 // Copyright (C) 2023 Oscar
 
 import * as router from "./router";
-import * as config from "./config";
 import * as setup from "./setup";
 import * as effects from "./effects";
 
@@ -10,7 +9,7 @@ import page from "page";
 
 export const status_bar = document.getElementById("status")!;
 
-export const about_me = document.getElementById("about_me")!;
+export const about = document.getElementById("about")!;
 export const blog = document.getElementById("blog")!;
 
 
@@ -21,7 +20,7 @@ window.onload = () => {
     setup.header(document.querySelector("header")!, router.Route.Blog, document.getElementById("status")!);
     setup.status(document.getElementById("statusContent")!);
     effects.parallax(document.getElementById("intro_background")!, -10);
-    effects.section_fade(Array.from(document.getElementById("about_me")!.children), "contentHidden");
+    effects.section_fade(Array.from(document.getElementById("about")!.children), "contentHidden");
     loading_done(document.querySelector("page-loader")!, "loaderHidden", "disableScrolling");
 }
 
@@ -33,7 +32,7 @@ export function loading_done(loader: HTMLElement, hidden_class: string, disable_
             setTimeout(() => {
                 loader.hidden = true;
                 document.querySelector("body")!.classList.remove(disable_scrolling);
-            }, (getComputedStyle(loader).getPropertyValue("--animationDuration").slice(0, -1) as any) as number * 1000);
+            }, (getComputedStyle(loader).getPropertyValue("--animationDuration").slice(0, -1) as any) as number * 500);
         } else {
             loader.hidden = true;
         }

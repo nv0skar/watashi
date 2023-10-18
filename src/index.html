@@ -10,24 +10,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-    <title>Oscar A.</title>
-    <meta property="og:title" content="Oscar A.">
+    <title>Oscar AG</title>
+    <meta property="og:title" content="Oscar AG">
 
-    <meta name="description" content="Science & tech entusiast who calls himself an explorer 🤠">
-    <meta property="og:description" content="Science & tech entusiast who calls himself an explorer 🤠">
+    <meta name="description" content="Intricate about creating never seen stuff.">
+    <meta property="og:description" content="Intricate about creating never seen stuff.">
 
-    <meta name="keywords" content="nv0skar, Oscar, Oscar A., Oscar Alvarez">
+    <meta name="keywords" content="nv0skar, Oscar, Oscar AG, Oscar A., Oscar Alvarez">
 
-    <script async defer type="module" src="app.ts"></script>
+    <script async defer type="module" src="./app.ts"></script>
     <script async defer type="text/javascript" src="https://beampipe.io/js/tracker.js" id="tracker"
         data-beampipe-domain=""></script>
 
-    <link rel="stylesheet" type="text/css" href="index.scss">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" href="./styles/main.scss" as="style">
+    <link rel="preload" href="../assets/images/portrait.png?as=webp&quality=75" as="image">
+
+    <link rel="stylesheet" type="text/css" href="./styles/main.scss">
+    <link rel="stylesheet" type="text/css" href="./styles/about.scss">
+    <link rel="stylesheet" type="text/css" href="./styles/blog.scss">
+    <link rel="stylesheet" type="text/css" href="./styles/consts.scss">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
-        href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Noto+Serif:wght@400;700&display=swap">
-    <meta name="theme-color" content="#000047">
+        href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Noto+Serif:wght@400;700&display=swap"
+        crossorigin>
+
+    <meta name="theme-color" content="#abadad">
 </head>
 
 <body>
@@ -73,7 +83,7 @@
 
     <div id="blog"></div>
 
-    <div id="about_me">
+    <div id="about">
         <intro id="intro">
             <div id="intro_background"></div>
             <h1 id="intro_title">
@@ -137,7 +147,7 @@
                         websites, video-editing, photo-editing, and other creative tasks.</p>
                 </div>
                 <div>
-                    <h3>And more</h3>
+                    <h3>And more.</h3>
                     <p>I cannot say I am not a talkative and an approachable person, you can get in touch with me to
                         know further.</p>
                 </div>
@@ -204,7 +214,7 @@
     </div>
 
     <footer>
-        <h1>Oscar AG.</h1>
+        <h1>Oscar AG</h1>
         <p>Made by me, see it on <a href="https://github.com/nv0skar/whoami">Github</a></p>
         <p id="footerNotice">Copyright (C) <span id="footerYear">2023</span> Oscar AG</p>
     </footer>

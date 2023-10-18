@@ -1,8 +1,7 @@
 // whoami
 // Copyright (C) 2023 Oscar
 
-import Typewriter from 'typewriter-effect/dist/core';
-import GraphemeSplitter from "grapheme-splitter";
+import Typed from "typed.js";
 import Rellax from "rellax";
 import { PowerGlitch } from "powerglitch";
 
@@ -14,7 +13,7 @@ export function section_fade<T extends Element>(elements: T[], animation: string
             }
         })
     }, {
-        threshold: 0.1
+        threshold: 0.05
     })
     elements.forEach((element) => {
         element.classList.add(animation);
@@ -22,22 +21,13 @@ export function section_fade<T extends Element>(elements: T[], animation: string
     })
 }
 
-
 export function writing<T extends Element>(element: T, phrases: string[]) {
-    const splitter = (string) => {
-        const splitter = new GraphemeSplitter();
-        return splitter.splitGraphemes(string);
-    };
-    let effect = new Typewriter(element, {
-        cursor: "_",
-        delay: 50,
-        loop: true,
-        stringSplitter: splitter
+    let effect = new Typed(element, {
+        strings: phrases,
+        typeSpeed: 50,
+        fadeOut: true
     });
-    phrases.forEach((phrase) => {
-        effect.typeString(phrase).pauseFor(1000).deleteAll();
-    })
-    const onScreen = new IntersectionObserver((elements) => {
+    new IntersectionObserver((elements) => {
         elements.forEach((element) => {
             if (element.isIntersecting) {
                 effect.start()
@@ -47,8 +37,7 @@ export function writing<T extends Element>(element: T, phrases: string[]) {
         })
     }, {
         threshold: 1.0
-    });
-    onScreen.observe(element);
+    }).observe(element);
 }
 
 export function random_quote<T extends Element>(target: T, quotes: string[]) {
