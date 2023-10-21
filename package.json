@@ -1,5 +1,5 @@
 {
-    "name": "whoami",
+    "name": "watashi",
     "source": "src/index.html",
     "scripts": {
         "start": "parcel",

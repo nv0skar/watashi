@@ -5,7 +5,7 @@ import Typed from "typed.js";
 import Rellax from "rellax";
 import { PowerGlitch } from "powerglitch";
 
-export function section_fade<T extends Element>(elements: T[], animation: string) {
+export function fade<T extends Element>(elements: T[], animation: string) {
     const onScreen = new IntersectionObserver((elements) => {
         elements.forEach((element) => {
             if (element.isIntersecting) {
@@ -13,7 +13,7 @@ export function section_fade<T extends Element>(elements: T[], animation: string
             }
         })
     }, {
-        threshold: 0.05
+        threshold: 0.1
     })
     elements.forEach((element) => {
         element.classList.add(animation);

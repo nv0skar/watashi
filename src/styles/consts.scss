@@ -59,8 +59,6 @@ $footer-background-gradient-2: #29a378;
     padding-left: env(safe-area-inset-left);
     font-family: "Fira Sans", sans-serif;
     border-top: dashed 0.35rem rgba($color: white, $alpha: 0.75);
-    will-change: opacity;
-    transition: opacity 250ms ease-in-out;
 }
 
 %appearing {

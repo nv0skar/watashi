@@ -84,14 +84,12 @@
             display: flex;
             flex-wrap: wrap;
             flex: 1;
-
             @media (max-width: 640px) {
                 justify-content: center;
             }
             a {
                 @extend .scale_hover;
                 text-decoration: none;
-                width: 50%;
                 margin: 1rem;
                 padding: 2rem;
                 color: $blog-text-light;

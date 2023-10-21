@@ -14,10 +14,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.contentHidden {
-    opacity: 0;
-}
-
 page-loader {
     @include glass(32px, 100%);
     --animationDuration: 500ms;
@@ -25,7 +21,7 @@ page-loader {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: radial-gradient(transparent 75%, black 100%);
+    background: rgba($color: black, $alpha: 0.5);
     will-change: opacity;
     transition: opacity var(--animationDuration) ease-in-out;
 }
@@ -42,10 +38,6 @@ highlight {
     padding: 0.1rem;
     font-size: 105%;
     background-color: rgba($color: springgreen, $alpha: 0.15);
-}
-
-.loaderHidden {
-    opacity: 0;
 }
 
 #noscript {
@@ -83,8 +75,10 @@ header {
     width: 100%;
     height: min-content;
     padding-top: env(safe-area-inset-top);
-    will-change: backdrop-filter;
-    transition: backdrop-filter 500ms ease-in-out;
+    will-change: opacity, backdrop-filter;
+    transition:
+        opacity 200ms ease-in-out,
+        backdrop-filter 500ms ease-in-out;
     #status {
         @include glass(32px, 125%);
         display: none;
@@ -142,20 +136,27 @@ header {
                     0.1rem 0.1rem $header-links-shadow,
                     0 0 4px black;
                 font-weight: bold;
-                will-change: background-color;
-                transition: background-color 250ms linear;
-                &:hover {
-                    background-color: rgba($color: $header-links-background, $alpha: 0.1);
-                }
             }
         }
     }
 }
 
-.headerBackground {
+.status_visible {
+    display: flex !important;
+}
+
+.header_background {
     @include glass(52px, 100%);
 }
 
-.statusShow {
-    display: flex !important;
+.loader_hidden {
+    opacity: 0;
+}
+
+.content_hidden {
+    opacity: 0;
+}
+
+.header_hidden {
+    opacity: 0;
 }

@@ -20,8 +20,8 @@ window.onload = () => {
     setup.header(document.querySelector("header")!, router.Route.Blog, document.getElementById("status")!);
     setup.status(document.getElementById("statusContent")!);
     effects.parallax(document.getElementById("intro_background")!, -10);
-    effects.section_fade(Array.from(document.getElementById("about")!.children), "contentHidden");
-    loading_done(document.querySelector("page-loader")!, "loaderHidden", "disableScrolling");
+    effects.fade(Array.from(document.getElementById("about")!.querySelectorAll("h1")!), "content_hidden");
+    loading_done(document.querySelector("page-loader")!, "loader_hidden", "disableScrolling");
 }
 
 export function loading_done(loader: HTMLElement, hidden_class: string, disable_scrolling: string) {
