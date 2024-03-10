@@ -1,42 +1,42 @@
 // whoami
 // Copyright (C) 2023 Oscar
 
-$header-status-text: white;
-$header-status-border-color: #240c59;
-$header-status-background: #000047;
-
 $header-title: white;
-$header-title-shadow: #240c59;
+$header-title-shadow-1: #ff0000;
+$header-title-shadow-2: #350080;
 $header-links: white;
 $header-links-shadow: #240c59;
 $header-links-background: #1d1b63;
 
-$blog-article-border-light: #0b1b2d;
-$blog-article-border-dark: #bcd2ee;
+$blog-article-border: #bcd2ee;
 $blog-article-content-background: rgba(
     $color: black,
     $alpha: 0
 );
-$blog-text-light: #0b1b2d;
-$blog-text-dark: white;
-$blog-background-light: white;
-$blog-background-dark: black;
+$blog-text: white;
+$blog-background-gradient-1: #041a62;
+$blog-background-gradient-2: #28376a;
+$blog-background-gradient-3: #0e0461;
 
 $about-text: white;
 $about-text-shadow: #240c59;
 $about-link: #1ea888;
-$about-background-gradient-1: gray;
-$about-background-gradient-2: whitesmoke;
+$about-background-gradient-1: #041a62;
+$about-background-gradient-2: #6c8df9;
+$about-background-gradient-3: #0e0461;
 
 $ribbon-text: white;
-$ribbon-text-shadow: #240c59;
-$ribbon-background: #000000;
+$ribbon-text-shadow-1: #250070;
+$ribbon-text-shadow-2: #0f7000;
+$ribbon-text-shadow-3: #004770;
+$ribbon-background-1: #000000;
+$ribbon-background-2: #000f70;
 
 $roadmap-content-background: #091b25;
-$roadmap-content-border: gray;
+$roadmap-content-border: black;
 $roadmap-background: #000000;
 
-$contact-content-border: #5c77ff;
+$contact-content-border: black;
 $contact-content-background: #000080;
 $contact-background-gradient-1: #191c7e;
 $contact-background-gradient-2: #17043f;
@@ -54,11 +54,11 @@ $footer-background-gradient-2: #29a378;
     min-width: 100%;
     min-height: min-content;
     box-sizing: border-box;
-    padding: 4rem 0.5rem;
+    padding: 8rem 1rem;
     padding-right: env(safe-area-inset-right);
     padding-left: env(safe-area-inset-left);
-    font-family: "Fira Sans", sans-serif;
-    border-top: dashed 0.35rem rgba($color: white, $alpha: 0.75);
+    font-family: "Noto Serif", sans-serif;
+    border-top: dashed 0.2rem rgba($color: white, $alpha: 0.75);
 }
 
 %appearing {

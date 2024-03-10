@@ -20,14 +20,14 @@ export let current_page = () => {
 const setup_route = {
     blog: () => {
         app.blog.hidden = false;
-        app.status_bar.hidden = true;
         app.about.hidden = true;
+        app.title.hidden = false;
         app.blog.textContent = "";
     },
     about: () => {
-        app.status_bar.hidden = false;
         app.about.hidden = false;
         app.blog.hidden = true;
+        app.title.hidden = true;
         app.blog.textContent = "";
     }
 }

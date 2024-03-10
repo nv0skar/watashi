@@ -79,33 +79,6 @@ header {
     transition:
         opacity 200ms ease-in-out,
         backdrop-filter 500ms ease-in-out;
-    #status {
-        @include glass(32px, 125%);
-        display: none;
-        align-items: center;
-        box-sizing: border-box;
-        height: 2.5rem;
-        padding: 1rem;
-        color: $header-status-text;
-        text-shadow:
-            0.05rem 0.05rem $about-text-shadow,
-            0 0 2px black;
-        font-weight: bold;
-        font-size: 1rem;
-        text-transform: uppercase;
-        background-color: rgba($color: gray, $alpha: 0.25);
-        pre {
-            animation: scrollText 60s infinite linear;
-            @keyframes scrollText {
-                0% {
-                    transform: translateX(0%);
-                }
-                100% {
-                    transform: translateX(-100%);
-                }
-            }
-        }
-    }
     div {
         display: flex;
         align-items: center;
@@ -116,11 +89,12 @@ header {
             max-height: min-content;
             color: $header-title;
             text-shadow:
-                0.3rem 0.3rem $header-title-shadow,
-                0 0 4px black,
-                0 0 4.5px wheat;
-            font-size: 2rem;
-            font-family: "Zen Dots";
+                0.1rem 0.1rem $header-title-shadow-1,
+                -0.1rem -0.1rem $header-title-shadow-2,
+                0 0 4px black;
+            font-size: 2.5rem;
+            font-weight: 900;
+            font-variant: small-caps;
             text-align: left;
         }
         #links {
@@ -139,10 +113,6 @@ header {
             }
         }
     }
-}
-
-.status_visible {
-    display: flex !important;
 }
 
 .header_background {

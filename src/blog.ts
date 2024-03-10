@@ -25,31 +25,29 @@ export function fetch_articles(override_title: string | undefined = undefined) {
     const gallery = document.createElement("div");
     gallery.className = "gallery";
     list.appendChild(gallery);
-    subtitle.innerHTML = "🌪️ Wait a minute 🌪️";
+    subtitle.innerHTML = "Fetching...";
     octokit.gists.listForUser({
         username: config.USERNAME
     }).then((response) => {
-        response.data.forEach((note) => {
-            if (note.description === null)
+        response.data.forEach((article) => {
+            if (article.description === null)
                 return;
-            if (note.description.substring(0, config.NOTE_PREFIX.length) == config.NOTE_PREFIX) {
-                for (const article of gallery.childNodes) {
-                    const link = (article as HTMLElement).getAttribute("href")!;
-                    if (link.substring((link.length - note.id.length), link.length) == note.id) {
+            if (article.description.substring(0, config.ARTICLE_PREFIX.length) == config.ARTICLE_PREFIX) {
+                console.log("ok")
+                for (const gallery_article of gallery.childNodes) {
+                    const link = (gallery_article as HTMLElement).getAttribute("href")!;
+                    if (link.substring((link.length - article.id.length), link.length) == article.id) {
                         return
                     }
                 }
                 const container = document.createElement("a")
                 const title = document.createElement("h3");
-                title.innerHTML = note.description.substring((config.NOTE_PREFIX.length + 1), note.description.length);
+                title.innerHTML = article.description.substring((config.ARTICLE_PREFIX.length + 1), article.description.length);
                 const created = document.createElement("p");
-                created.innerHTML = "Created at " + (new Date(note.created_at).toDateString());
-                const comments = document.createElement("p");
-                comments.innerHTML = (note.comments == 0 ? "No comments yet!" : (note.comments + " comment" + (note.comments == 1 ? "" : "s")));
-                container.href = "/blog/" + note.id;
+                created.innerHTML = new Date(article.created_at).toDateString();
+                container.href = "/blog/" + article.id;
                 container.appendChild(title)
                 container.appendChild(created);
-                container.appendChild(comments);
                 gallery.appendChild(container);
             }
         })
@@ -60,11 +58,11 @@ export function fetch_articles(override_title: string | undefined = undefined) {
         }
     }).catch((error) => {
         console.error("Unable to fetch blog!", error);
-        subtitle.innerHTML = "😱 There was an error while trying to fetch the blog! 😱";
+        subtitle.innerHTML = "Cannot fetch the blog!";
     })
 }
 
-export function load_article(noteId: string) {
+export function load_article(articleId: string) {
     const article = document.createElement("div");
     article.className = "article";
     app.blog.appendChild(article);
@@ -76,17 +74,17 @@ export function load_article(noteId: string) {
     const footer = document.createElement("div");
     footer.className = "info";
     article.appendChild(footer);
-    renderer.innerHTML = "Loading note ✨"
-    octokit.gists.get({ gist_id: noteId }).then((note) => {
+    renderer.innerHTML = "Loading article ✨"
+    octokit.gists.get({ gist_id: articleId }).then((article) => {
         const name = document.createElement("strong");
         const date = document.createElement("p");
         const comments = document.createElement("span");
         const link = document.createElement("a");
-        name.innerHTML = note.data.description!.substring((config.NOTE_PREFIX.length + 1), note.data.description!.length);
-        date.innerHTML = "Created at " + (new Date(note.data.created_at!).toDateString());
-        comments.innerHTML = "💬 " + note.data.comments + " ● ";
-        link.innerHTML = "You can go to GitHub to comment!";
-        link.setAttribute("href", note.data.html_url!);
+        name.innerHTML = article.data.description!.substring((config.ARTICLE_PREFIX.length + 1), article.data.description!.length);
+        date.innerHTML = new Date(article.data.created_at!).toDateString();
+        comments.innerHTML = "💬 " + article.data.comments + " ● ";
+        link.innerHTML = "Comment on GitHub";
+        link.setAttribute("href", article.data.html_url!);
         link.rel = "noopener noreferrer";
         link.target = "_blank";
         about.appendChild(name);
@@ -94,7 +92,7 @@ export function load_article(noteId: string) {
         footer.appendChild(comments);
         footer.appendChild(link);
         renderer.innerHTML = ""
-        Object.values(note.data.files!).forEach((file) => {
+        Object.values(article.data.files!).forEach((file) => {
             const fileCanvas = document.createElement("div");
             const filename = document.createElement("span");
             const fileRender = document.createElement("div");
@@ -107,7 +105,7 @@ export function load_article(noteId: string) {
             renderer.appendChild(fileCanvas);
         })
     }).catch((error) => {
-        console.error("Unable to load note!", error);
-        renderer.innerHTML = "😱 There was an error while trying to load the note! 😱";
+        console.error("Cannot load the article!", error);
+        renderer.innerHTML = "Cannot load the article!";
     })
 }

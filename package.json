@@ -6,19 +6,19 @@
         "build": "parcel build"
     },
     "devDependencies": {
-        "@parcel/transformer-sass": "^2.8.0",
+        "@parcel/transformer-sass": "^2.12.0",
         "parcel": "latest",
         "process": "^0.11.10",
-        "sharp": "^0.31.2"
+        "sharp": "^0.31.3"
     },
     "dependencies": {
-        "@octokit/rest": "^19.0.5",
+        "@octokit/rest": "^19.0.13",
         "@solonovamax/parcel-transformer-google-fonts": "^0.1.5",
-        "dompurify": "^2.4.3",
-        "marked": "^4.2.5",
+        "dompurify": "^2.4.7",
+        "marked": "^4.3.0",
         "page": "^1.11.6",
-        "typed.js": "^2.0.16",
-        "powerglitch": "^2.3.0",
-        "rellax": "^1.12.1"
+        "powerglitch": "^2.3.2",
+        "rellax": "^1.12.1",
+        "typed.js": "^2.1.0"
     }
 }

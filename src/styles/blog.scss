@@ -4,33 +4,26 @@
 @import "./consts";
 
 #blog {
-    @extend %content;
     min-height: 100vh;
-    text-align: left;
-    color: $blog-text-light;
-    background-color: $blog-background-light;
-    @media (prefers-color-scheme: dark) {
-        color: $blog-text-dark;
-        background-color: $blog-background-dark;
-    }
-    h1 {
-        margin-left: 0;
-        margin-right: 0;
+    color: $blog-text;
+    &::before {
+        content: "";
+        z-index: -1;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            70deg,
+            $about-background-gradient-1,
+            $about-background-gradient-2,
+            $about-background-gradient-3
+        );
     }
     .article {
-        margin: 3rem 1.5rem;
-        padding-bottom: 3rem;
-        border-bottom: 0.2rem solid;
-        border-bottom-color: $blog-article-border-light;
-        @media (prefers-color-scheme: dark) {
-            border-bottom-color: $blog-article-border-dark;
-        }
+        padding: 5rem 2rem 0 2rem;
         .info {
             opacity: 0.85;
             text-align: right;
-            * {
-                margin: 0;
-            }
             a {
                 color: inherit;
             }
@@ -39,21 +32,15 @@
             .info {
                 display: flex;
                 align-items: center;
-                margin: 0 0 2rem;
                 &::before {
                     content: "";
                     flex: 1;
                     height: 0.15rem;
                     margin-right: 0.75rem;
-                    background-color: $blog-article-border-light;
-                    @media (prefers-color-scheme: dark) {
-                        background-color: $blog-article-border-dark;
-                    }
+                    background-color: $blog-article-border;
                 }
             }
-
             .canvas {
-                margin: 1rem 2rem;
                 text-align: justify;
                 h1 {
                     font-size: 2.5rem;
@@ -72,13 +59,13 @@
         }
     }
     .list {
-        margin: 2rem 1.5rem;
+        padding-top: 5rem;
         text-align: center;
         h1 {
-            font-size: 3.25rem;
+            font-size: 3.5rem;
         }
         span {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
         }
         .gallery {
             display: flex;
@@ -92,37 +79,18 @@
                 text-decoration: none;
                 margin: 1rem;
                 padding: 2rem;
-                color: $blog-text-light;
-                @media (prefers-color-scheme: dark) {
-                    color: $blog-text-dark;
-                }
+                color: $blog-text;
                 background-color: rgba($color: $blog-article-content-background, $alpha: 0.2);
                 text-align: left;
                 border: dashed 0.5rem;
                 border-radius: 0.5rem;
-                border-color: $blog-article-border-light;
-                @media (prefers-color-scheme: dark) {
-                    border-color: $blog-article-border-dark;
-                }
-
+                border-color: $blog-article-border;
                 h3 {
-                    @include glass(22px, 100%);
-                    margin: 0.5rem;
-                    font-size: 2.35rem;
-                    font-family: "Zen Dots";
-                    letter-spacing: -0.15rem;
+                    margin: 0;
+                    font-size: 2.5rem;
                     @media (max-width: 640px) {
                         margin: 0.5rem;
                         font-size: 2.25rem;
-                    }
-                }
-                p {
-                    @include glass(22px, 100%);
-                    margin: 0.5rem;
-                    font-size: 1.1rem;
-                    @media (max-width: 640px) {
-                        margin: 0.5rem;
-                        font-size: 1rem;
                     }
                 }
             }

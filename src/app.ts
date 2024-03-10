@@ -7,7 +7,9 @@ import * as effects from "./effects";
 
 import page from "page";
 
-export const status_bar = document.getElementById("status")!;
+export const header = document.querySelector("header")!;
+
+export const title = header.getElementsByTagName("h1")![0];
 
 export const about = document.getElementById("about")!;
 export const blog = document.getElementById("blog")!;
@@ -17,8 +19,7 @@ window.onload = () => {
     page()
     document.getElementById("tracker")!.setAttribute("data-beampipe-domain", window.location.hostname);
     document.getElementById("footerYear")!.innerHTML = ((new Date()).getUTCFullYear()).toString();
-    setup.header(document.querySelector("header")!, router.Route.Blog, document.getElementById("status")!);
-    setup.status(document.getElementById("statusContent")!);
+    setup.header(router.Route.Blog);
     effects.parallax(document.getElementById("intro_background")!, -10);
     effects.fade(Array.from(document.getElementById("about")!.querySelectorAll("h1")!), "content_hidden");
     loading_done(document.querySelector("page-loader")!, "loader_hidden", "disableScrolling");
