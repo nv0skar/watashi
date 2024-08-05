@@ -57,7 +57,7 @@ a {
 #intro {
     @include maximize();
     display: flex;
-    justify-content: right;
+    justify-content: left;
     align-items: center;
     box-sizing: border-box;
     #intro_background {
@@ -66,12 +66,13 @@ a {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 95%;
+        height: 100%;
         overflow: hidden;
-        background-image: url("../../assets/images/portrait.png?as=webp&quality=75");
+        background-image: url("../../assets/images/portrait.jpg?format=webp");
         background-repeat: no-repeat;
-        background-size: contain;
-        background-position: 0% 100%;
+        background-size: cover;
+        background-position: 100% 40%;
+        box-shadow: inset 0px 0px 5px 0px #000;
     }
     #intro_title {
         margin: 4rem;
@@ -79,8 +80,8 @@ a {
         color: $header-title;
         text-align: right;
         text-shadow:
-            0.5rem 0.5rem $header-title-shadow-1,
-            -0.5rem -0.5rem $header-title-shadow-2,
+            0.25rem 0.25rem $header-title-shadow-1,
+            -0.25rem -0.25rem $header-title-shadow-2,
             0 0 12px black;
         font-variant: small-caps;
         font-size: 12rem;
@@ -179,8 +180,8 @@ a {
         color: $ribbon-text;
         text-align: center;
         text-shadow:
-            0.3rem 0.3rem $ribbon-text-shadow-2,
-            -0.3rem -0.3rem $ribbon-text-shadow-3,
+            0.15rem 0.15rem $ribbon-text-shadow-2,
+            -0.15rem -0.15rem $ribbon-text-shadow-3,
             0 0 12px black;
         font-size: 4.5rem;
         font-weight: 900;

@@ -7,7 +7,8 @@ import * as effects from "./effects";
 
 import DOMPurify from "dompurify";
 import { marked } from "marked";
-import { Octokit } from "@octokit/rest";
+import { Octokit } from "octokit";
+
 
 const octokit = new Octokit({ userAgent: "whoami" })
 
@@ -26,7 +27,7 @@ export function fetch_articles(override_title: string | undefined = undefined) {
     gallery.className = "gallery";
     list.appendChild(gallery);
     subtitle.innerHTML = "Fetching...";
-    octokit.gists.listForUser({
+    octokit.rest.gists.listForUser({
         username: config.USERNAME
     }).then((response) => {
         response.data.forEach((article) => {
@@ -75,7 +76,7 @@ export function load_article(articleId: string) {
     footer.className = "info";
     article.appendChild(footer);
     renderer.innerHTML = "Loading article ✨"
-    octokit.gists.get({ gist_id: articleId }).then((article) => {
+    octokit.rest.gists.get({ gist_id: articleId }).then((article) => {
         const name = document.createElement("strong");
         const date = document.createElement("p");
         const comments = document.createElement("span");
@@ -99,7 +100,7 @@ export function load_article(articleId: string) {
             fileCanvas.classList.add("canvas");
             filename.classList.add("info");
             filename.innerHTML = file!.filename!;
-            fileRender.innerHTML = DOMPurify.sanitize(marked.parse(file!.content));
+            fileRender.innerHTML = DOMPurify.sanitize(marked.parse(file!.content!));
             fileCanvas.appendChild(filename);
             fileCanvas.appendChild(fileRender);
             renderer.appendChild(fileCanvas);

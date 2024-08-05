@@ -1,23 +1,21 @@
 {
     "name": "watashi",
     "source": "src/index.html",
+    "type": "module",
     "scripts": {
-        "start": "parcel",
-        "build": "parcel build"
+        "start": "vite dev --port 1234",
+        "build": "vite build"
     },
     "devDependencies": {
-        "@parcel/transformer-sass": "^2.12.0",
-        "parcel": "latest",
-        "process": "^0.11.10",
-        "sharp": "^0.31.3"
+        "vite": "^5.3.5",
+        "vite-imagetools": "^7.0.4"
     },
     "dependencies": {
-        "@octokit/rest": "^19.0.13",
-        "@solonovamax/parcel-transformer-google-fonts": "^0.1.5",
-        "dompurify": "^2.4.7",
-        "marked": "^4.3.0",
+        "dompurify": "^3.1.6",
+        "marked": "^13.0.3",
+        "octokit": "^4.0.2",
         "page": "^1.11.6",
-        "powerglitch": "^2.3.2",
+        "powerglitch": "^2.3.3",
         "rellax": "^1.12.1",
         "typed.js": "^2.1.0"
     }
