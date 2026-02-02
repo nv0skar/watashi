@@ -1,11 +1,11 @@
-// whoami
-// Copyright (C) 2023 Oscar
+// Whoami
+// Copyright (C) 2026 Oscar Alvarez Gonzalez
 
-@import "./consts";
+@use "./commons.scss";
 
 #blog {
     min-height: 100vh;
-    color: $blog-text;
+    color: commons.$blog-text;
     &::before {
         content: "";
         z-index: -1;
@@ -14,9 +14,9 @@
         height: 100%;
         background: linear-gradient(
             70deg,
-            $about-background-gradient-1,
-            $about-background-gradient-2,
-            $about-background-gradient-3
+            commons.$about-background-gradient-1,
+            commons.$about-background-gradient-2,
+            commons.$about-background-gradient-3
         );
     }
     .article {
@@ -37,7 +37,7 @@
                     flex: 1;
                     height: 0.15rem;
                     margin-right: 0.75rem;
-                    background-color: $blog-article-border;
+                    background-color: commons.$blog-article-border;
                 }
             }
             .canvas {
@@ -79,12 +79,12 @@
                 text-decoration: none;
                 margin: 1rem;
                 padding: 2rem;
-                color: $blog-text;
-                background-color: rgba($color: $blog-article-content-background, $alpha: 0.2);
+                color: commons.$blog-text;
+                background-color: rgba($color: commons.$blog-article-content-background, $alpha: 0.2);
                 text-align: left;
                 border: dashed 0.5rem;
                 border-radius: 0.5rem;
-                border-color: $blog-article-border;
+                border-color: commons.$blog-article-border;
                 h3 {
                     margin: 0;
                     font-size: 2.5rem;

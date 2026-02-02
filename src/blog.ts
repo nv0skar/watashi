@@ -1,5 +1,5 @@
-// whoami
-// Copyright (C) 2023 Oscar
+// Whoami
+// Copyright (C) 2026 Oscar Alvarez Gonzalez
 
 import * as config from "./config";
 import * as app from "./app";

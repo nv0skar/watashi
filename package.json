@@ -3,21 +3,21 @@
     "source": "src/index.html",
     "type": "module",
     "scripts": {
-        "start": "vite dev --port 1234",
-        "build": "vite build"
+        "start": "bun run vite dev --port 1234",
+        "build": "bun run vite build"
     },
     "devDependencies": {
-        "vite": "^5.3.5",
-        "sass": "^1.77.8",
-        "vite-imagetools": "^7.0.4"
+        "vite": "^7.3.1",
+        "sass": "^1.97.3",
+        "vite-imagetools": "^9.0.2"
     },
     "dependencies": {
-        "dompurify": "^3.1.6",
-        "marked": "^13.0.3",
-        "octokit": "^4.0.2",
+        "dompurify": "^3.3.1",
+        "marked": "^17.0.1",
+        "octokit": "^5.0.5",
         "page": "^1.11.6",
-        "powerglitch": "^2.3.3",
+        "powerglitch": "^2.5.0",
         "rellax": "^1.12.1",
-        "typed.js": "^2.1.0"
+        "typed.js": "^3.0.0"
     }
 }

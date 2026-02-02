@@ -1,7 +1,7 @@
-// whoami
-// Copyright (C) 2023 Oscar
+// Whoami
+// Copyright (C) 2026 Oscar Alvarez Gonzalez
 
-@import "./consts";
+@use "./commons.scss";
 
 * {
     font-family: "Noto Serif";
@@ -15,7 +15,7 @@ html {
 }
 
 page-loader {
-    @include glass(32px, 100%);
+    @include commons.glass(32px, 100%);
     --animationDuration: 500ms;
     z-index: 2;
     position: fixed;
@@ -33,7 +33,7 @@ u {
     text-underline-offset: 0.5rem;
 }
 highlight {
-    @include glass(4px, 100%);
+    @include commons.glass(4px, 100%);
     @extend .font_size_hover;
     padding: 0.1rem;
     font-size: 105%;
@@ -72,7 +72,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    min-width: 100%;
+    justify-content: center;
     height: min-content;
     padding-top: env(safe-area-inset-top);
     will-change: opacity, backdrop-filter;
@@ -87,10 +88,10 @@ header {
             margin: 1rem;
             max-width: min-content;
             max-height: min-content;
-            color: $header-title;
+            color: commons.$header-title;
             text-shadow:
-                0.1rem 0.1rem $header-title-shadow-1,
-                -0.1rem -0.1rem $header-title-shadow-2,
+                0.1rem 0.1rem commons.$header-title-shadow-1,
+                -0.1rem -0.1rem commons.$header-title-shadow-2,
                 0 0 4px black;
             font-size: 2.5rem;
             font-weight: 900;
@@ -105,9 +106,9 @@ header {
             a {
                 @extend .scale_hover;
                 text-decoration: none;
-                color: $header-links;
+                color: commons.$header-links;
                 text-shadow:
-                    0.1rem 0.1rem $header-links-shadow,
+                    0.1rem 0.1rem commons.$header-links-shadow,
                     0 0 4px black;
                 font-weight: bold;
             }
@@ -116,7 +117,7 @@ header {
 }
 
 .header_background {
-    @include glass(52px, 100%);
+    @include commons.glass(52px, 100%);
 }
 
 .loader_hidden {

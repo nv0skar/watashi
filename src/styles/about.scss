@@ -1,11 +1,11 @@
-// whoami
-// Copyright (C) 2023 Oscar
+// Whoami
+// Copyright (C) 2026 Oscar Alvarez Gonzalez
 
-@import "./consts";
+@use "./commons.scss";
 
 #about {
     min-height: 100vh;
-    color: $about-text;
+    color: commons.$about-text;
     &::before {
         content: "";
         z-index: -1;
@@ -14,9 +14,9 @@
         height: 100%;
         background: linear-gradient(
             70deg,
-            $about-background-gradient-1,
-            $about-background-gradient-2,
-            $about-background-gradient-3
+            commons.$about-background-gradient-1,
+            commons.$about-background-gradient-2,
+            commons.$about-background-gradient-3
         );
     }
     h1 {
@@ -24,7 +24,7 @@
         margin: 2rem;
         font-size: 5.5rem;
         text-shadow:
-            0.35rem 0.35rem $about-text-shadow,
+            0.35rem 0.35rem commons.$about-text-shadow,
             0 0 4px black;
         font-family: "Noto Serif";
         font-variant: small-caps;
@@ -37,10 +37,10 @@
     h2,
     h3,
     p {
-        color: $about-text;
+        color: commons.$about-text;
     }
     a {
-        color: $about-link;
+        color: commons.$about-link;
     }
 }
 
@@ -55,7 +55,7 @@ a {
 }
 
 #intro {
-    @include maximize();
+    @include commons.maximize();
     display: flex;
     justify-content: left;
     align-items: center;
@@ -68,34 +68,34 @@ a {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-image: url("../../assets/images/portrait.jpg?format=webp");
+        background-image: url("../../assets/images/portrait.png?format=webp");
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         background-position: 100% 40%;
         box-shadow: inset 0px 0px 5px 0px #000;
     }
     #intro_title {
         margin: 4rem;
         margin-right: 14rem;
-        color: $header-title;
+        color: commons.$header-title;
         text-align: right;
         text-shadow:
-            0.25rem 0.25rem $header-title-shadow-1,
-            -0.25rem -0.25rem $header-title-shadow-2,
+            0.25rem 0.25rem commons.$header-title-shadow-1,
+            -0.25rem -0.25rem commons.$header-title-shadow-2,
             0 0 12px black;
-        font-variant: small-caps;
-        font-size: 12rem;
+        font-size: 8rem;
         font-weight: 900;
-        line-height: 10rem;
+        line-height: 6rem;
         span {
-            font-size: 8rem;
+            font-size: 5rem;
+            font-weight: 900;
         }
         @media (max-width: 640px) {
-            line-height: 4rem;
             margin: 2rem;
             font-size: 6rem;
+            line-height: 4rem;
             span {
-                font-size: 3rem;
+                font-size: 4rem;
             }
         }
     }
@@ -104,22 +104,20 @@ a {
 #first_glance {
     @extend %content;
     @extend %appearing;
-    @include glass(8px, 125%);
-    background-color: rgba($color: $ribbon-background-1, $alpha: 0.5);
+    @include commons.glass(10px, 125%);
+    background-color: rgba($color: commons.$ribbon-background-1, $alpha: 0.5);
     h2 {
-        margin: 4rem;
-        color: $ribbon-text;
-        text-align: center;
+        margin: 3rem;
+        color: commons.$ribbon-text;
+        text-align: justify;
         text-shadow:
-            0.25rem 0.25rem $ribbon-text-shadow-1,
+            0.25rem 0.25rem commons.$ribbon-text-shadow-1,
             0 0 12px black;
-        font-size: 4.5rem;
+        font-size: 2rem;
         font-weight: 700;
-        line-height: 6rem;
         @media (max-width: 640px) {
-            line-height: 3rem;
             margin: 0 1rem 0 1rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         @media (max-height: 640px) {
             font-size: 1rem;
@@ -130,8 +128,8 @@ a {
 #roadmap {
     @extend %content;
     @extend %appearing;
-    @include glass(64px, 125%);
-    background-color: rgba($color: $roadmap-background, $alpha: 0.5);
+    @include commons.glass(10px, 125%);
+    background-color: rgba($color: commons.$roadmap-background, $alpha: 0.5);
     text-align: center;
     div {
         display: flex;
@@ -144,20 +142,20 @@ a {
             margin: 0;
         }
         div {
-            @include glass(4px, 125%);
+            @include commons.glass(10px, 125%);
             @extend .scale_hover;
             background-color: rgba($color: black, $alpha: 0.25);
             margin: 0.5rem;
             padding: 2rem;
-            box-shadow: 0.5rem 0.5rem rgba($color: $roadmap-content-border, $alpha: 0.35);
+            border-radius: 2rem;
+            box-shadow: 0.5rem 0.5rem rgba($color: commons.$roadmap-content-border, $alpha: 0.25);
             h3 {
                 margin: 0;
                 align-self: center;
                 text-align: center;
                 font-size: 2.5rem;
-                font-variant: small-caps;
                 text-shadow:
-                    0.2rem 0.2rem $about-text-shadow,
+                    0.2rem 0.2rem commons.$about-text-shadow,
                     0 0 12px black;
             }
             p {
@@ -173,23 +171,21 @@ a {
 #outro {
     @extend %content;
     @extend %appearing;
-    @include glass(32px, 100%);
-    background-color: rgba($color: $ribbon-background-2, $alpha: 0.5);
+    @include commons.glass(10px, 100%);
+    background-color: rgba($color: commons.$ribbon-background-2, $alpha: 0.5);
     h2 {
-        margin: 4rem;
-        color: $ribbon-text;
+        margin: 3rem;
+        color: commons.$ribbon-text;
         text-align: center;
         text-shadow:
-            0.15rem 0.15rem $ribbon-text-shadow-2,
-            -0.15rem -0.15rem $ribbon-text-shadow-3,
+            0.15rem 0.15rem commons.$ribbon-text-shadow-2,
+            -0.15rem -0.15rem commons.$ribbon-text-shadow-3,
             0 0 12px black;
-        font-size: 4.5rem;
-        font-weight: 900;
-        line-height: 6rem;
+        font-size: 2rem;
+        text-align: justify;
         @media (max-width: 640px) {
-            line-height: 3rem;
             margin: 0 1rem 0 1rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         @media (max-height: 640px) {
             font-size: 1rem;
@@ -200,8 +196,8 @@ a {
 #contact {
     @extend %content;
     @extend %appearing;
-    @include glass(64px, 125%);
-    background-color: rgba($color: $roadmap-background, $alpha: 0.55);
+    @include commons.glass(10px, 125%);
+    background-color: rgba($color: commons.$roadmap-background, $alpha: 0.55);
     text-align: center;
     line-height: 4rem;
     div {
@@ -210,23 +206,23 @@ a {
         flex: 1;
         justify-content: center;
         a {
-            @include glass(4px, 125%);
+            @include commons.glass(10px, 125%);
             @extend .scale_hover;
             text-decoration: none;
-            margin: 1.5rem;
-            padding: 1.5rem;
-            box-shadow: 0.5rem 0.5rem rgba($color: $roadmap-content-border, $alpha: 0.35);
-            text-shadow: 0 0 1.5px $about-text-shadow;
+            margin: 1rem;
+            padding: 1rem;
+            box-shadow: 0.5rem 0.5rem rgba($color: commons.$roadmap-content-border, $alpha: 0.25);
+            text-shadow: 0 0 1.5px commons.$about-text-shadow;
             background-color: rgba($color: black, $alpha: 0.25);
+            border-radius: 2rem;
             text-align: left;
             h3 {
                 margin: 1rem;
-                color: $about-text;
+                color: commons.$about-text;
                 text-shadow:
-                    0.25rem 0.25rem $about-text-shadow,
+                    0.25rem 0.25rem commons.$about-text-shadow,
                     0 0 12px black;
                 font-size: 3rem;
-                font-variant: small-caps;
                 @media (max-width: 640px) {
                     margin: 0.75rem;
                     font-size: 2rem;
@@ -247,28 +243,27 @@ a {
 
 footer {
     @extend %content;
-    @include glass(8px, 100%);
+    @include commons.glass(10px, 100%);
     position: relative;
     min-height: unset;
     max-height: min-content;
     padding: 4rem;
-    color: $footer-text;
+    color: commons.$footer-text;
     text-align: center;
     align-items: center;
     box-sizing: border-box;
-    border-top: 0.35rem solid $footer-border;
     background: rgba($color: black, $alpha: 0.5);
     h1 {
         @extend .scale_hover;
         margin: 0.25rem;
         font-size: 3.5rem;
         text-shadow:
-            0.2rem 0.2rem $footer-text-shadow,
+            0.2rem 0.2rem commons.$footer-text-shadow,
             0 0 4px black,
             0 0 4px wheat;
     }
     a {
-        color: $footer-link;
+        color: commons.$footer-link;
     }
     #footerNotice {
         opacity: 0.75;
