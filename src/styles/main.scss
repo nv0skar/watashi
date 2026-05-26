@@ -14,18 +14,6 @@ html {
     scroll-behavior: smooth;
 }
 
-page-loader {
-    @include commons.glass(32px, 100%);
-    --animationDuration: 500ms;
-    z-index: 2;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba($color: black, $alpha: 0.5);
-    will-change: opacity;
-    transition: opacity var(--animationDuration) ease-in-out;
-}
-
 u {
     @extend .font_size_hover;
     font-size: 105%;
@@ -33,7 +21,7 @@ u {
     text-underline-offset: 0.5rem;
 }
 highlight {
-    @include commons.glass(4px, 100%);
+    @include commons.glass(4px);
     @extend .font_size_hover;
     padding: 0.1rem;
     font-size: 105%;
@@ -65,35 +53,40 @@ body {
     &::-webkit-scrollbar {
         display: none;
     }
+    background: linear-gradient(70deg, #0b0f18, #090c21, #1e2140);
 }
 
 header {
+    @include commons.glass(20rem);
+    &::before {
+        background-color: rgba($color: black, $alpha: 0.5);
+    }
     z-index: 1;
     position: fixed;
     top: 0;
-    left: 0;
-    min-width: 100%;
+    left: 50%;
+    margin: 1rem;
     justify-content: center;
     height: min-content;
     padding-top: env(safe-area-inset-top);
     will-change: opacity, backdrop-filter;
+    transform: translateX(-50%);
     transition:
-        opacity 200ms ease-in-out,
+        opacity 500ms ease-in-out,
         backdrop-filter 500ms ease-in-out;
     div {
         display: flex;
         align-items: center;
         h1 {
             @extend .scale_hover;
-            margin: 1rem;
+            margin: 0.5rem 1rem;
             max-width: min-content;
             max-height: min-content;
-            color: commons.$header-title;
+            color: white;
             text-shadow:
-                0.1rem 0.1rem commons.$header-title-shadow-1,
-                -0.1rem -0.1rem commons.$header-title-shadow-2,
+                -0.1rem -0.1rem #1e2140,
                 0 0 4px black;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 900;
             font-variant: small-caps;
             text-align: left;
@@ -106,18 +99,14 @@ header {
             a {
                 @extend .scale_hover;
                 text-decoration: none;
-                color: commons.$header-links;
+                color: white;
                 text-shadow:
-                    0.1rem 0.1rem commons.$header-links-shadow,
+                    0.1rem 0.1rem commons.$text-shadow-color,
                     0 0 4px black;
                 font-weight: bold;
             }
         }
     }
-}
-
-.header_background {
-    @include commons.glass(52px, 100%);
 }
 
 .loader_hidden {

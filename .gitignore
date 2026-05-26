@@ -2,5 +2,5 @@
 **/.DS_Store
 **/node_modules
 **/*lock*
-**/dist
+**/dist*
 **/.parcel-cache

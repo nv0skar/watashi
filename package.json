@@ -1,19 +1,19 @@
 {
     "name": "watashi",
-    "source": "src/index.html",
+    "source": "index.html",
     "type": "module",
     "scripts": {
-        "start": "bun run vite dev --port 1234",
+        "dev": "bun run vite dev --port 1234",
         "build": "bun run vite build"
     },
     "devDependencies": {
-        "vite": "^7.3.1",
-        "sass": "^1.97.3",
-        "vite-imagetools": "^9.0.2"
+        "vite": "^8.0.14",
+        "sass": "^1.100.0",
+        "vite-imagetools": "^10.0.0"
     },
     "dependencies": {
-        "dompurify": "^3.3.1",
-        "marked": "^17.0.1",
+        "dompurify": "^3.4.5",
+        "marked": "^18.0.4",
         "octokit": "^5.0.5",
         "page": "^1.11.6",
         "powerglitch": "^2.5.0",

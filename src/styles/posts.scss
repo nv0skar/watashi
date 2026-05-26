@@ -3,7 +3,7 @@
 
 @use "./commons.scss";
 
-#blog {
+#posts {
     min-height: 100vh;
     color: commons.$blog-text;
     &::before {
@@ -12,23 +12,19 @@
         position: fixed;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-            70deg,
-            commons.$about-background-gradient-1,
-            commons.$about-background-gradient-2,
-            commons.$about-background-gradient-3
-        );
+        background: black;
     }
     .article {
         padding: 5rem 2rem 0 2rem;
         .info {
-            opacity: 0.85;
+            opacity: 0.5;
             text-align: right;
             a {
                 color: inherit;
             }
         }
         article {
+            margin-bottom: 4rem;
             .info {
                 display: flex;
                 align-items: center;
@@ -43,7 +39,11 @@
             .canvas {
                 text-align: justify;
                 h1 {
-                    font-size: 2.5rem;
+                    text-align: left;
+                    font-size: 3rem;
+                }
+                p {
+                    line-height: 1.5rem;
                 }
                 a {
                     color: inherit;
@@ -80,7 +80,10 @@
                 margin: 1rem;
                 padding: 2rem;
                 color: commons.$blog-text;
-                background-color: rgba($color: commons.$blog-article-content-background, $alpha: 0.2);
+                background-color: rgba(
+                    $color: commons.$blog-article-content-background,
+                    $alpha: 0.2
+                );
                 text-align: left;
                 border: dashed 0.5rem;
                 border-radius: 0.5rem;
